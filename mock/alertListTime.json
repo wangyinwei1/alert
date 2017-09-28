@@ -1,0 +1,106 @@
+[{
+  "jb": "aa",
+  "id": 11,
+  "des": "哈哈",
+  "children": [{
+        "date": 1487032335817,
+        "jd":"级别",
+        "name": "DBserver_cpu利用率",
+        "list": [{
+            "date": 1487032335817,
+            "jd":"级别",
+            "name": "DBserver_cpu利用率"
+          },{
+              "date": 1487032635817,
+              "jd":"级别2",
+              "name": "DBserver_cpu利用率2"
+            },{
+                "date": 1487033835817,
+                "jd":"级别2",
+                "name": "DBserver_cpu利用率2"
+              },{
+                  "date": 1487035035817,
+                  "jd":"级别2",
+                  "name": "DBserver_cpu利用率2"
+                }
+        ]
+      },
+      {
+            "date": 1487032335817,
+            "jd":"级别",
+            "name": "DBserver_cpu利用率",
+            "list": [{
+                  "date": 1487032635817,
+                  "jd":"级别2",
+                  "name": "DBserver_cpu利用率2"
+                },{
+                    "date": 1487033835817,
+                    "jd":"级别2",
+                    "name": "DBserver_cpu利用率2"
+                  },{
+                      "date": 1487035035817,
+                      "jd":"级别2",
+                      "name": "DBserver_cpu利用率2"
+                    }
+            ]
+          }
+    ],
+  "list": [{
+      "date": 1487032335817,
+      "jd":"级别",
+      "name": "DBserver_cpu利用率"
+    }
+  ]
+},{
+  "jb": "紧急",
+  "id": 11,
+  "des": "哈哈",
+  "list": [{
+      "date": 1487032335817,
+      "jd":"级别",
+      "name": "DBserver_cpu利用率"
+    },{
+        "date": 1487032635817,
+        "jd":"级别2",
+        "name": "DBserver_cpu利用率2"
+      },{
+          "date": 1487033835817,
+          "jd":"级别2",
+          "name": "DBserver_cpu利用率2"
+        },{
+            "date": 1487035035817,
+            "jd":"级别2",
+            "name": "DBserver_cpu利用率2"
+          }
+  ]
+},{
+  "jb": "紧急",
+  "id": 11,
+  "des": "哈哈",
+  "list": [{
+      "date": 1486976290101,
+      "jd":"级别",
+      "name": "DBserver_cpu利用率"
+    }
+  ]
+},{
+  "jb": "紧急",
+  "id": 11,
+  "des": "哈哈",
+  "list": [{
+      "date": 1486976290101,
+      "jd":"级别",
+      "name": "DBserver_cpu利用率"
+    }
+  ]
+},{
+  "jb": "紧急",
+  "id": 11,
+  "des": "哈哈",
+  "list": [{
+      "date": 1486976290101,
+      "jd":"级别",
+      "name": "DBserver_cpu利用率"
+    }
+  ]
+}]

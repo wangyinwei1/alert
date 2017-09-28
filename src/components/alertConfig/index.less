@@ -1,0 +1,68 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2         3            4        5        6         7         8       9        10       11       
+@var_default : @blue98, @opacity, @blue99,      @blue39, @blue65, @blue100, @white0,  2px,  @blue65, @blue100, @white0;
+@var_white   : @white0, @white11, @var_blue112, @white0, @white6,  @white6, @white6,  10px, @blue8,  @blue8,   @blue8;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .configHome {
+      & > a > div {
+        position: relative;
+        border: 1px solid transparent;
+        height: 145px;
+        margin-bottom: 18px;
+        background-color: extract(@var, 1);
+        box-sizing: border-box;
+        border: 1px solid extract(@var, 2);
+        border-radius: 2px;
+        transition: all 0.5s;
+
+        &:hover {
+          top: -4px;
+          left: -4px;
+          box-shadow: 5px 5px  extract(@var, 8) extract(@var, 3);
+          background-color: extract(@var, 4);
+          .configIcon {
+            color: extract(@var, 9);
+          }
+          .title {
+             color: extract(@var, 11);
+          }
+          .message {
+            color: extract(@var, 10);
+          }
+        }
+
+        .configIcon {
+          position: absolute;
+          left: 32px;
+          top: 40px;
+          line-height: 60px;
+          font-size: 60px;
+          color: extract(@var, 5);
+        }
+
+        .title {
+          position: absolute;
+          top: 40px;
+          left: 134px;
+          font-size: 24px;
+          color: extract(@var, 7);
+        }
+
+        .message {
+          position: absolute;
+          top: 90px;
+          left: 134px;
+          font-size: 14px;
+          color: extract(@var, 6);
+        }
+      }
+    }
+  }
+}
+

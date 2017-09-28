@@ -1,0 +1,106 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/footerMixin.less';
+
+@bDisable: rgba(32,150,224,.3);
+@rDisable: rgba(114,64,51,.8);
+//蓝色和白色色系要上下一一对应
+//             1         2        3        4        5        6         7        8         9      10        11        12        13          14         15
+@var_default : @white0, @blue96,  @blue27, @blue32, @blue28, @blue28,  @blue29, @blue29,  @red,  @blue102, @opacity, .6;
+@var_white   : @black1, @white11, @white7, @black1, @white0, @white11, @white0, @white11, @red0, @blue8,   @white11, .8;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .orderTriangleDown,.orderTriangleUp {
+      position: absolute;
+      bottom: 30%;
+      width: 0;
+      height: 0;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+      cursor: pointer;
+      transition: border-top .2s ease;
+      border-top: 6px solid #cdd2d8;
+    }
+    .delBtn{
+      border: 1px solid extract(@var, 9);
+      background: extract(@var, 9);
+      span{
+        color: #fff;
+      }
+      &[disabled] {
+        opacity: extract(@var, 12);
+        &:hover{
+          border: 1px solid extract(@var, 9);
+          background: extract(@var, 9);
+        }
+      }
+    }
+    .editBtn{
+      border: 1px solid extract(@var, 10);
+      background: extract(@var, 10);
+      span{
+        color: #fff;
+      }
+      &[disabled] {
+        opacity: extract(@var, 12);
+        &:hover{
+          border: 1px solid extract(@var, 10);
+          background: extract(@var, 10);
+        }
+      }
+    }
+    .tableWrapper {
+      :global {
+        .ant-table-column-sorter .anticon-caret-down, .ant-table-column-sorter .anticon-caret-up {
+          color: #cdd2d8;
+        }
+        .ant-table-column-sorter-down.on .anticon-caret-down,
+        .ant-table-column-sorter-down.on .anticon-caret-up, 
+        .ant-table-column-sorter-up.on .anticon-caret-down,
+        .ant-table-column-sorter-up.on .anticon-caret-up {
+          color: #4082e6;
+        }
+        .ant-table table {
+          border: 1px solid extract(@var,11);
+          border-bottom: none;
+        }
+        .ant-table-thead>tr>th {
+          background-color: extract(@var,3);
+          color: extract(@var,4);
+          border-bottom: 1px solid extract(@var,2);
+        }
+        .ant-table-placeholder {
+          background-color: extract(@var,7);
+          color: extract(@var,1);
+          border-bottom-color: extract(@var,8);
+        }
+        .ant-table-tbody>.ant-table-row {
+          
+          td, td>a, td>span {
+            color: extract(@var,1);
+          }
+          &:nth-child(2n+1){
+            td{
+              background-color: extract(@var,5);
+              border-bottom: 1px solid extract(@var,6);
+              &:hover {
+                background-color: extract(@var,5);
+              }
+            } 
+          }
+          &:nth-child(2n) {
+            td{
+              background-color: extract(@var,7);
+              border-bottom: 1px solid extract(@var,8);
+              &:hover {
+                background-color: extract(@var,7);
+              }
+            } 
+          }
+        }
+      }
+    }
+  }
+}

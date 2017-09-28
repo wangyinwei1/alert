@@ -1,0 +1,278 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/footerMixin.less';
+@import '../../theme/scrollbar.less';
+
+//蓝色和白色色系要上下一一对应
+//             1        2         3         4        5        6         7        8       9        10       11        12        13       14        15        16        17          18        19
+@var_default : @blue21, @opacity, @opacity, @blue86, @blue74, @blue74,  @blue75, @blue,  @blue22, @blue38, @blue31,  @blue16,  @white0, @blue157, @blue14, #5be570, #ffae2f, #fadc23,  #52edcb;
+@var_white   : @white6, @white0,  @white11, @blue8,  @white0, @white11, @black1, @blue8, @blue72, @black1, @white13, @white34, @black1, @white0,  @white17,#1dca9d, #ff9b2f, #ffdc1d,  #3ff6ce;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .alertSetInfo{
+      color: extract(@var, 13);
+    }
+    .alertNoData{
+      color: extract(@var, 13);
+    }
+    .treemap{
+      :global{
+        .parent{
+          .background {
+            fill: extract(@var, 14);
+            stroke: extract(@var, 15);
+          }
+        }
+        .child {
+          rect {
+             stroke: extract(@var, 15);
+          }
+        }
+        .nodata {
+          fill: extract(@var, 16);
+        }
+        .urgent {
+          fill: #ff522a;
+        }
+        .notice {
+          fill: extract(@var, 17);
+        }
+        .remind {
+          fill: extract(@var, 18);
+        }
+        .recovery {
+          fill: extract(@var, 19);
+        }
+      }
+
+    }
+    .myModal{
+      :global(.ant-modal-body){
+        min-height: 200px;
+        max-height: 400px;
+        overflow: auto;
+        .scrollBarMixin(@name);
+      }
+      :global(.ant-modal-content){
+        width: 600px;
+      }
+    }
+    .focusSet{
+      float: right;
+      width: 110px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 2px;
+      color: white;
+      background-color: extract(@var, 8);
+      cursor: pointer;
+      &:hover {
+        background-color: extract(@var, 9);
+      }
+      i{
+        margin-right: 5px;
+        vertical-align: middle;
+        font-size: 14px;
+      }
+    }
+    ul.alertStatus{
+      position: absolute;
+      right: 10px;
+      top: 65px;
+      li{
+        position: relative;
+        margin-right: 15px;
+        float: left;
+        p{
+          display: inline-block;
+          position: relative;
+          left: 8px;
+          color: extract(@var, 10);
+        }
+        .extraStyle{
+          display: inline-block;
+          position: relative;
+          top: 2px;
+        }
+      }
+    }
+    .layout{
+      float: right;
+      padding-top: 4px;
+      margin-right: 12px;
+      a{
+        display: inline-block;
+        &.autoLayout, &.fixedLayout{
+          width: 32px;
+          height: 26px;
+          background: extract(@var, 5);
+          border-radius: 2px;
+          color: extract(@var, 7);
+          text-align: center;
+          border: 1px solid extract(@var, 6);
+        }
+        &.fullScreen{
+          margin-right: 5px;
+          padding: 0 5px 0 5px;
+          border: 1px solid extract(@var, 3);
+          color: extract(@var, 1);
+          border-radius: 3px;
+          background-color: extract(@var, 2);
+        }
+        &.minFullScreen{
+          position: fixed;
+          z-index: 2000;
+          right: 10px;
+          top: 23px;
+          i{
+            font-size: 24px;
+            color: #6cecff;
+          }
+        }
+        &.autoLayout{
+          border-radius: 0  3px 3px 0;
+          border-left: none;
+        }
+        &.fixedLayout{
+          border-radius: 3px 0 0 3px;
+          border-right: none;
+        }
+        &:global(.curLayout){
+          background: extract(@var, 4);
+          border-color: extract(@var, 4);
+          color: white;
+
+        }
+      }
+    }
+  }
+}
+
+:global{
+  .alertShow{
+    position: absolute;
+    background: #000;
+    opacity: .8;
+    padding: 8px;
+    color: white;
+    border-radius: 3px;
+    z-index: 999;
+    pointer-events:none
+  }
+}
+
+.exclamation{
+  display: inline-block;;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  //background: #4082e6;
+  background: #daab1c;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  content: '!';
+}
+.manageHead{
+  overflow: hidden;
+}
+.loadingWrap{
+  position: relative;
+  height: 100%;
+  clear: both;
+  color: #4082e6;
+}
+.treemap{
+  width: 100%;
+  top: 0;
+  // background:#0d3158
+}
+.maxTreemap {
+  z-index: 920
+}
+.alertSetInfo{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  margin-top: -10px;
+  //color: #4082e6;
+  font-size: 14px;
+  &:before{
+    .exclamation()
+  }
+}
+.alertNoData{
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  text-align: center;
+  font-size: 14px;
+  &:before{
+    .exclamation()
+  }
+}
+.alertSetTip{
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  width: 343px;
+  height: 259px;
+  //background: ~"url('./guideTip.png')";
+  z-index: 1001;
+  cursor: pointer;
+}
+
+.fullScreenMask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .9;
+  z-index: 915;
+}
+
+// .modalFooter{
+//   height: 60px;
+//   line-height: 60px;
+//   margin: -10px -16px -10px -10px;
+//   //background: #f2f7fc;
+//   background: #145e99;
+//   text-align: center;
+//   .ghostBtn{
+//     color: #fff;
+//     background-color: #108ee9;
+//     border-color: #108ee9;
+//     &:hover{
+//       color: #fff;
+//       background-color: #49a9ee;
+//       border-color: #49a9ee;
+//     }
+//   }
+//   button{
+//         width: 82px;
+//   }
+// }
+
+:global{
+  .blue{
+    :local{
+      .alertItemSet{
+        color: @white2;
+        ul{
+          li{
+            p{
+              color:#4990c4;
+            }
+          }
+        }
+      }
+    }
+  }
+}

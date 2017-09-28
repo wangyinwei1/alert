@@ -1,0 +1,92 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2       3        4         5        6         7        8
+@var_default : @blue16, @white0, @iptBg,  @blue133, @blue69, @blue77,  @blue78, @blue11;
+@var_white   : @white0, @black1, @white2, @white16, @white0, @white26, @white4, @black1;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    .wrapper{
+      position: relative;
+      padding: 10px;
+      :global{
+        .ant-form-item-label label{
+          color: extract(@var, 2);
+        }
+        .ant-form-item{
+          margin-bottom: 17px;
+        }
+        .ant-form-item-label label{
+          font-size: 13px;
+        }
+      }
+      .recipients {
+        color: #fff;
+        width: 100% !important;
+        :global {
+          .ant-select-selection--multiple .ant-select-selection__choice {
+            background-color: extract(@var, 6);
+            color: extract(@var, 2);
+            border-radius: 2px;
+          }
+          .ant-select-search--inline .ant-select-search__field {
+            color: extract(@var, 8);
+          }
+          .ant-select-selection__choice__remove {
+            background-color: extract(@var, 7);
+            color: #fff;
+            top: 2px;
+            right: 0;
+            display: inline-block;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            line-height: 20px;
+          }
+        }
+      }
+      .notificationTabs{
+        :global{
+          .ant-tabs-bar{
+            .ant-tabs-nav-scroll{
+              margin-left: 10px;
+            }
+            margin-bottom: 17px;
+            border-bottom: none;
+            background: extract(@var, 1);
+            .ant-tabs-nav .ant-tabs-tab{
+              padding: 8px;
+              border-radius: 4px;
+              margin-right: 10px;
+              border: 2px dotted extract(@var, 4);
+              background-color: extract(@var, 5);
+              & label.ant-checkbox-wrapper{
+                margin-right: 0px;
+              }
+              &:hover{
+                color: extract(@var, 2);
+              }
+            }
+            .ant-tabs-nav .ant-tabs-tab-active{
+              background-color: extract(@var, 3);
+              transition: background .3s ease-in-out;
+              color: extract(@var, 2);
+            }
+            .ant-tabs-nav .ant-tabs-tab-disabled{
+              background-color: extract(@var, 3);
+              opacity: .5;
+              cursor: not-allowed;
+              transition: .3s;
+              pointer-events: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}

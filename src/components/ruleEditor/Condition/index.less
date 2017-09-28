@@ -1,0 +1,80 @@
+@import '../../../theme/mixin.less';
+
+// --------- set Color --------- //
+// ---------  1        2         3                  4
+@var_default: @white0, @blue77,  @placeholderColor, @blue128;
+@var_white:   @black1, @white0,  @red1,             @white8;
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    .wrapper{
+      :global{
+        .ant-form-item-label{
+          text-align: center;
+          label{
+            color: extract(@var, 1);
+          }
+        }
+        .ant-form-item-control{
+          line-height: inherit
+        }
+      }
+      .mins{
+        color: extract(@var, 1);
+        margin: 10px
+      }
+      .notify{
+        color: extract(@var, 3);
+        &::before{
+          content: '*';
+        }
+      }
+      .aboutTag{
+        .searchBuilder{
+          background: extract(@var, 2);
+          width: 70px
+        }
+        .keyLabel{
+          text-align: center;
+          color: extract(@var, 1);
+          &::before{
+            margin-right: 3px;
+            content: '+';
+            display: inline-block;
+            cursor: pointer;
+            font-size: 13px;
+            color: extract(@var, 1);
+          }
+        }
+        .newIncident{
+          padding: 30px 25px;
+          border-radius: 4px;
+          background: extract(@var, 4);
+          :global{
+            .ant-row {
+              margin-bottom: 18px;
+              //line-height: 28px;
+            }
+          }
+        }
+      }
+      .aboutTopology{
+        .title{
+          font-size: 13px;
+          margin-bottom: 15px;
+          color: extract(@var, 1);
+          &::after{
+            content: '：';
+            color: extract(@var, 1);
+          }
+        }
+        .look{
+          margin-left: 10px;
+          color: #9dd7ff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

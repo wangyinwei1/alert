@@ -1,0 +1,175 @@
+@import '../../../../theme/mixin.less';
+@lineBg: rgba(130, 211, 251, 0.28);
+//蓝色和白色色系要上下一一对应
+//             1         2         3         4        5        6         7         8         9         10       11        12      13        14       15        16        17        18      19        20       21       22       23       24        25        26       27        28        29       30      31
+@var_default : @blue,    @blue133, @white0, @blue134, @blue41, @blue152, @lineBg,  @blue18,  @iptBg,   @blue18, @blue6,  @white0, @blue6,   @blue40;
+@var_white   : @white2,  @white16, @black1, @white14, @white4, @blue8,   @white16, @white16, @white18, @blue13, @white0, @white6, @white16, @white14;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    body .notificationTabs {
+      .playerTime, .timeOut {
+        :global {
+          .ant-input-number-handler-wrap{
+            border-color:extract(@var, 8);
+            background-color: extract(@var, 11);
+          }
+          .ant-input-number {
+            background-color: transparent;
+            border-color: extract(@var, 13);
+          }
+          .ant-form-item-control-wrapper {
+            width: 60%;
+          }
+          .ant-input-number-handler-up,.ant-input-number-handler-down {
+            border-color:extract(@var, 8);
+            background-color: extract(@var, 9);
+          }
+          .ant-input-number-handler-wrap .ant-input-number-handler-up-inner,.ant-input-number-handler-wrap .ant-input-number-handler-down-inner {
+            color: extract(@var, 10);
+          }
+          .ant-input-number input{
+            background-color: extract(@var, 11);
+            color: extract(@var, 5);
+          }
+        }
+      }
+      :global {
+        .ant-tabs-tab {
+          border-color: extract(@var, 2) !important;
+        }
+        .ant-tabs-tab-active {
+          background-color: extract(@var, 1) !important;
+          color: extract(@var, 3) !important;
+        }
+        .ant-tabs-tabpane {
+          border: none !important;
+        }
+      }
+        .msgType{
+          color: extract(@var, 6);
+          &::after{
+            background: extract(@var, 7);
+          }
+        }
+    }
+    .insertVar {
+      background-color: extract(@var, 4);
+      color: extract(@var, 5);
+    }
+    body .varsWrap {
+      :global {
+        .ant-popover-inner {
+            background-color: extract(@var, 14);
+        }
+      }
+    }
+  }
+}
+.notificationTabsLabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-top: 59px;
+    width: 8.333%;
+    text-align: right;
+    font-size: 13px;
+
+    &:after {
+        position: relative;
+        top: -.5px;
+        margin: 0 8px 0 2px;
+        content: ":";
+    }
+}
+
+.notificationTabs {
+  position: relative;
+  overflow: visible;
+  :global {
+    .ant-tabs-tab {
+      height: 30px !important;
+      border-style: dashed !important;
+      border-color: #6CA4CD !important;
+      line-height: 30px !important;
+    }
+    .ant-tabs-tab-active {
+      background-color: #1681C4 !important;
+    }
+    .ant-checkbox-wrapper {
+      margin-right: 5px;
+      & + span {
+          padding: 0;
+      }
+    }
+    .ant-tabs-tabpane {
+      padding: 0 !important;
+    }
+    .ant-form-item-control-wrapper,
+    .ant-form-item-label {
+        float: left;
+        width: 75px;
+    }
+  }
+  .msgType{
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 13px;
+    line-height: 1;
+    &::after{
+      position: absolute;
+      top: 50%;
+      left: 4%;
+      display: block;
+      content: ' ';
+      height: 1px;
+      width: 60%;
+    }
+  }
+  .msgTitle {
+    :global {
+      .ant-form-item-control-wrapper {
+          width: 40%;
+      }
+    }
+  }
+  .msgContent {
+    :global {
+      .ant-form-item-control-wrapper {
+        width: 60%;
+      }
+    }
+  }
+  
+  .playerType{
+    :global {
+      .ant-form-item-control-wrapper {
+        width: 60%;
+      }
+    }
+  }
+}
+
+.varsWrap {
+  width: 45%;
+  border: 0;
+  :global {
+    .ant-popover-arrow {
+        display: none;
+    }
+  }
+}
+
+.insertVar {
+  position: absolute;
+  top: 26px;
+  left: -65px;
+  display: inline-block;
+  padding: 0 5px;
+  height: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}

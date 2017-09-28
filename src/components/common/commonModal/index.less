@@ -1,0 +1,54 @@
+// common modal footer
+@import '../../../theme/footerMixin.less';
+.modalFooter {
+  height: 60px;
+  line-height: 60px;
+  margin: -10px -16px -10px -10px; //background: #f2f7fc;
+  background: #145e99;
+  text-align: center;
+  button {
+    width: 82px;
+  }
+  .ghostBtn {
+    color: #fff;
+    background-color: #108ee9;
+    border-color: #108ee9;
+    &:hover {
+      color: #fff;
+      background-color: #49a9ee;
+      border-color: #49a9ee;
+    }
+  }
+}
+
+.withIconDiv {
+  padding: 35px;
+  i {
+    position: relative;
+    display: inline-block;
+    font-size: 45px;
+    line-height: 1;
+    color: #a5f664;
+    vertical-align: top;
+  }
+  &>div {
+    display: inline-block;
+    width: 80%;
+    margin-left: 25px;
+    p {
+      display: inline-block;
+      line-height: 45px;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #fff;
+    }
+    .content {
+      font-size: 14px;
+      color: #9dd6ff;
+      margin-bottom: 18px;
+      margin-top: 10px;
+    }
+  }
+}

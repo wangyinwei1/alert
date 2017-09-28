@@ -1,0 +1,21 @@
+@import "../../vars.less";
+@import '../../../theme/footerMixin.less';
+
+.resolveMain{
+    position: relative;
+    padding: 5px 50px 5px 50px;
+    :global .ant-form-item{
+        margin-bottom: 0px;
+        :global .ant-form-item-label{
+            vertical-align: top;
+            & > label{
+                font-size: 14px;
+            }
+        }
+        & > div:last-child {
+            display: inline-block;
+            width: 65%
+        }
+    }
+}
+

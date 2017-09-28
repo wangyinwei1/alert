@@ -1,0 +1,81 @@
+.timeLoop(@counter, @i: 0) when (@counter >= @i) {
+  .timeMarks@{i} {
+    .ant-slider-handle {
+      &:after {
+        content: '@{i}';
+      }
+    }
+  }
+  .timeLoop(@counter, (@i + 1));
+}
+
+.timeWrap {
+  clear: both;
+  height: 98px;
+  & > div {
+    width: 185px;
+    padding: 0 10px;
+  }
+  .title{
+    text-align: left;
+    margin-left: -10px;
+    margin-bottom: 35px;
+  }
+  :global {
+    .timeLoop(59);
+    .ant-slider {
+      height: 2px;
+      border: none;
+      background-color: #226eaf;
+      margin: 0 0 25px 0;
+    }
+    .ant-slider-track {
+      height: 0;
+    }
+    .ant-slider-step {
+      height: 14px;
+      top: -4px;
+    }
+    .ant-slider-handle {
+      border: none;
+      width: 14px;
+      height: 14px;
+      &:after {
+        display: block;
+        width: 14px;
+        height: 14px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.timeStart {
+  float: left;
+}
+
+.timeEnd {
+  float: right;
+}
+.hours {
+  :global {
+    .ant-slider-handle {
+      &:after {
+        top: -18px;
+      }
+    }
+  }
+}
+
+.mins {
+  :global {
+    .ant-slider-handle {
+      &:after {
+        top: 14px;
+      }
+    }
+  }
+}

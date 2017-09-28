@@ -1,0 +1,362 @@
+// 颜色值
+/*
+    为避免颜色变量命名重复，为以后多套皮肤考量，采用“颜色+数字”命名方式；
+    数字空间分配：li∈[0,99], rong∈[100,199], yang∈[200,299]
+*/
+
+@blue: #1681c4;
+@blue-light: #53b9f9;
+@blue-dark: #054d7b;
+@blue-darker: #174a7a;
+
+@yellow: #c18527;
+@yellow-light: #e6ac50;
+@yellow-dark: #a8711b;
+@yellow-darker: #49555d;
+
+@green: #4cb153;
+@green-light: #61dd6a;
+@green-dark: #25882c;
+@green-darker: #215c62;
+
+@red : #d85735;
+@red-light: #f77553;
+@red-dark: #bc4121;
+@red-darker: #4e475f;
+
+@placeholderColor: #5994d6;
+
+// input
+@iptBorder: #276490;
+@iptFocusBorder: #68c5ff;
+@iptDisableBorder: #565c5d;
+@iptBg: #0d5990;
+@iptFocusBg: #1c77b8;
+@iptDisableBg: rgba(86, 92, 93, .5);
+@iptErrorBg: rgba(148, 76, 76, .5);
+@iptBlueBoxShadow:  0 0 0 2px rgba(16, 142, 233, 0.2);
+@iptWhiteBoxShadow: 0 0 0 2px rgba(64, 130, 230, 0.2);
+// 两个版本的颜色变量名和值
+
+// 透明色
+@opacity : transparent;
+@opacity1 : rgba(0,0,0,0.2);
+
+// 继承
+@inherit : inherit;
+
+
+// blue 系列
+@blue0  : #103c69;
+@blue1  : #173a62;
+@blue2  : #162f4e;
+@blue3  : #21446b;
+@blue4  : #1eb9ee;
+@blue5  : #89badd;
+@blue6  : #1d4676;
+@blue7  : #1d446d;
+@blue8  : #4082e6;
+@blue9  : #4d77bc;
+@blue10 : #4081e5;
+@blue11 : #9dd7ff;
+@blue12 : #67bffc;
+@blue13 : #b0bdd0;
+@blue14 : #163c67;
+@blue15 : #2bb4f4;
+@blue16 : #1d6aa7;
+@blue17 : #3092d9;
+@blue18 : #297ebb;
+@blue19 : #1e5b97;
+@blue20 : #90c6ee;
+//按钮颜色
+@blue21 : #108ee9;
+@blue22 : #49a9ee;
+@blue23 : #0e77ca;
+@blue24 : #255fbb;
+
+@blue25 : #2d98db;
+@blue26 : #7dbae6;
+@blue27 : #143355;
+@blue28 : #18477a;
+@blue29 : #1d5692;
+@blue30 : #1d558f;
+@blue31 : #153d5e;
+@blue32 : #4a88b6;
+@blue33 : #4fb8f0;
+@blue34 : #1985c9;
+@blue35 : #174170;
+@blue36 : #296193;
+@blue37 : #153960;
+@blue38 : #4990c4;
+@blue39 : #316fb4;
+@blue40 : #226eaf;
+@blue41 : #5994d6;
+@blue42 : #2276bf;
+@blue43 : #4B96D9;
+@blue44 : #2378C3;
+@blue45 : #143c67;
+@blue46 : #3B8CCA;
+@blue47 : #116098;
+@blue48 : #7BC5F5;
+@blue49 : #163E6B;
+@blue50 : #3488C8;
+@blue51 : #66a6ff;
+@blue52 : #7CC6F5;
+@blue53 : #46A0E4;
+@blue54 : #5bb1ef;
+@blue55 : #435776;
+@blue56 : #143459;
+@blue57 : #3a9ae5;
+@blue58 : #66a6fe;
+@blue59 : rgba(29,35,55,.16);
+@blue60 : #245893;
+@blue61 : #163b64;
+@blue62 : #6ac5fe;
+@blue63 : #104b7d;
+@blue64 : #145e99;
+@blue65 : #81c5f6;
+@blue66 : #01b4ff;
+@blue67 : #00c4ff;
+@blue68 : #14c3ff;
+@blue69 : #217dc6;
+@blue70 : #135991;
+@blue71 : #62b9f7;
+@blue72 : #2669ce;
+@blue73 : #2972b1;
+@blue74 : #275fa4;
+@blue75 : #74afd9;
+@blue76 : #095a95;
+@blue77 : #158ad4;
+@blue78 : #094e80;
+@blue79 : #03426f;
+@blue80 : #69c1ff;
+@blue81 : #186399;
+@blue82 : #0a548a;
+@blue83 : #57a9e5;
+@blue84 : #9dd6ff;
+@blue85 : #96d0f9;
+@blue86 : #204f86;
+@blue87 : #214c77;
+@blue88 : #123b67;
+@blue89 : steelblue;
+@blue90 : #092b50;
+@blue91 : rgba(140,190,242,.2);
+@blue92 : #143b67;
+@blue93 : #183e68;
+@blue94 : #164779;
+@blue95 : #4387b9;
+@blue96 : #1f528b;
+@blue97 : #316cad;
+@blue98 : #19508a;
+@blue99 : #17375d;
+@blue100 : #9ad0f7;
+@blue101 : #4081b4;
+@blue102 : #2096e0;
+@blue103 : #247cbb;
+@blue104 : #37a9fa;
+@blue105 : #173b65;
+@blue106 : #0e9ce0;
+@blue107 : #6ec2ff;
+@blue108 : #2980bf;
+@blue109 : #0f2f51;
+@blue110 : #66b4e9;
+@blue111 : #17487d;
+@blue112 : #16477b;
+@blue113 : #123c68;
+@blue114 : #17477b;
+@blue115 : #124679;
+@blue116 : #13456d;
+@blue117 : #67b6eb;
+@blue118 : #1c68a3;
+@blue119 : #175586;
+@blue120 : #1a6098;
+@blue121 : #70bdee;
+@blue122 : #70c3fb;
+@blue123 : #76c5f6;
+@blue124 : #528bca;
+@blue125 : #155A96;
+@blue126 : #2984C6;
+@blue127 : #1A63A1;
+@blue128 : #0D3562;
+@blue129 : #2769A2;
+@blue130 : #225188;
+@blue131 : #093362;
+@blue132 : #123863;
+@blue133 : #6CA4CD;
+@blue134 : #09284B;
+@blue135 : #6ab7fe;
+@blue136 : #6398c2;
+@blue137 : #18659f;
+@blue138 : #1f72b4;
+@blue139 : #164f7d;
+@blue140 : #195d93;
+@blue141 : #135375;
+@blue142 : #cbe4fc;
+@blue143 : #e8f2fc;
+@blue144 : #495d65;
+@blue145 : #2065ac;
+@blue146 : #1c385e;
+@blue147 : #123157;
+@blue148 : #153a65;
+@blue149 : #2c5a82;
+@blue150 : #12325a;
+@blue151 : #094d7e;
+@blue152 : #82d3fb;
+@blue153 : #65a2d3;
+@blue154 : #114670;
+@blue155 : #25517f;
+@blue156 : #9dcaf1;
+@blue157 : #0d3158;
+@blue158 : #214d7f;
+@blue159 : #0968ab;
+@blue160 : #1f70af;
+@blue161 : #7babe1;
+@blue162 : #8cbef2;
+@blue163 : #03203f;
+@blue164 : #255585;
+
+// 超出分配的空间，加前缀区分
+@var_blue100: #0b71b1;
+@var_blue101: #5c95e6;
+@var_blue102: #3887b9;
+@var_blue103: #25598c;
+@var_blue104: #3e546a;
+@var_blue105: #0d60a2;
+@var_blue106: #1eb9ef;
+@var_blue107: #183860;
+@var_blue108: #1f497a;
+@var_blue109: #3f83d2;
+@var_blue110: #10629a;
+@var_blue111: #113860;
+@var_blue112: rgba(36,110,222,.27);
+// rong
+
+
+// yang
+
+// white 系列
+@white0 : #ffffff;
+@white1 : #f2f7ff;
+@white2 : #edf2f7;
+@white3 : #b1bed1;
+@white4 : #acb3bf;
+@white5 : #9ea0b5;
+@white6 : #828b99;
+@white7 : #f8fbfd;
+@white8 : #f2f7fc;
+@white9 : #f5f8fb;
+@white10 : #eaedf2;
+@white11 : #e4e7eb;
+@white12 : #949aa3;
+@white13 : #f6f9fb;
+@white14 : #edf2f6;
+@white15 : #a5a8ac;
+@white16 : #d5ddeb;
+@white17 : #e4e7ec;
+@white18 : #f5f9fc;
+@white19 : #dae2f0;
+@white20 : #e9ecf0;
+@white21 : #f0f0f0;
+@white22 : #f7f7f7;
+@white23 : #e9e9e9;
+@white24 : rgba(0, 15, 30, 0.4);
+@white25 : #d8dfec;
+@white26 : #e9edf2;
+@white27 : #adb3bf;
+@white28 : #acb2be;
+@white29 : #d9e0ed;
+@white30 : #ebf1f6;
+@white31 : #e2e6ec;
+@white32 : rgba(233,237,242,0.9);
+@white33 : #d6dcea;
+@white34 : #d3d4d6;
+@white35 : #e5e6ea;
+@white36 : #aeb2be;
+@white37 : #9ea0b6;
+@white38 : #ced2d9;
+@white39 : #e1e1e1;
+@white40 : #cdd2d8;
+@white41 : #828b9a;
+@white42 : #f2f7fb;
+@white43 : #e4e8eb;
+@white44 : #6d7381;
+@white45 : #838b9a;
+@white46 : #a8bcd3;
+@white47 : #91a7be;
+@white48 : #ced2db;
+@white49 : #f3f3f3;
+@white50 : #ecf6fd;
+@white51 : #dbedff;
+
+// orange 系列
+@orange0 : #ffa60b;
+@orange1 : #fd8b67;
+
+
+// yellow 系列
+@yellow0 : #ffe60b;
+@yellow1 : #ffe04d;
+@yellow2 : #f9cd47;
+@yellow3 : #ffeb0b;
+@yellow4 : #ffec0b;
+@yellow5 : #f2cb54;
+@yellow6 : #fbda65;
+
+
+
+
+// green 系列
+@green0 : #67e6bb;
+@green1 : #73e6bf;
+@green2 : #a5f664;
+@green3 : #6cd9b5;
+
+@green4 : #00e3ab;
+@green5 : #6bd9b4;
+@green6 : #174964;
+@green7 : #0de717;
+
+
+
+// purple 系列
+@purple0 : #6270ef;
+@purple1 : #677ee6;
+@purple2 : #899ef8;
+
+
+// pink 系列
+@pink0 : #bf7afa;
+@pink1 : #b27dfa;
+@pink2 : #627dfa;
+
+
+// red 系列
+@red0 : #f47b59;
+@red1 : #f04134;
+@red2 : #ed5365;
+
+
+// black 系列
+@black0 : #4c5159;
+@black1 : #6c7480;
+@black2 : #394b57;
+@black3 : #535b5d;
+@black4 : #949ca8;
+@black5 : #4c5159;
+@black6 : rgba(0, 15, 30, 0.4);
+@black7 : #767779;
+@black8 :  #888888;
+@black9 :  #333030;
+@black10 : #373737;
+@black11 : #d5ddea;
+@black12 : #828a97;
+
+//透明色
+@opacity : transparent;
+@op25black : rgba(0, 0, 0, 0.25);
+@op20white : rgba(0, 0, 0, 0.2);
+//none
+@none: none;
+
+@tagBg : rgb(57, 120, 187);
+

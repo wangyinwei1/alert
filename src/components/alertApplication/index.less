@@ -1,0 +1,134 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/footerMixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2        3         4         5         6         7        8         9        10       11        12         13        14       15        16        17        18      19        20       21       22       23       24        25        26       27        28        29       30      31
+@var_default : @blue14, @opacity, @blue101, @opacity, @blue100, @blue103, @white0, @blue104, @white0;
+@var_white   : @white0, @white11, @blue8,   @white11, @black1,  @white8,  @white4, @blue8,   @black1;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .myAppTabs{
+      border: 1px solid extract(@var, 2);
+      box-sizing: border-box;
+      // set application button
+      .addBtn{
+          background-color: extract(@var, 1);
+          border-bottom: 1px solid extract(@var, 4);
+          .total{
+              color: extract(@var, 3);
+          }
+      }
+    }
+    .appModalMain{
+      & > p:first-child{
+        color: extract(@var, 5);
+      }
+      .appTitle{
+          color: extract(@var, 9);
+      }
+      .appItem{
+        background: extract(@var, 6);
+        box-shadow: extract(@var, 6) 0px 0px 2px;
+        border: 1px solid extract(@var, 6);
+        color: extract(@var, 7);
+        &:hover{
+            border: 1px solid extract(@var, 8);
+            background: extract(@var, 8);
+            color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// app tabs and modal --> blue
+.myAppTabs{
+    // set application button
+    .addBtn{
+        padding: 13px 0px 17px 0px;
+        .total{
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 13px;
+        }
+        :global{
+            .ant-btn{
+                padding: 2px 10px;
+            }
+        }
+        button > span{
+            position: relative;
+            bottom: 3px;
+            font-size: 13px;
+        }
+        button > span:before{
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            content: '+';
+            font-size: 18px;
+            padding-right: 5px;
+        }
+
+    }
+}
+// set application modal
+.appModalMain{
+    padding: 10px 25px;
+    & > p:first-child{
+        font-size: 13px;
+    }
+    .appTitle{
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    .appItem{
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        transition: all .5s;
+        font-size: 13px;
+        line-height: 5;
+        height: 68px;
+        width: 158px;
+        margin-top: 10px;
+        margin-right: 20px;
+        border-radius: 4px;
+        padding: 0px 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+// delete modal
+.delModalMain{
+    padding: 30px 25px;
+    p{
+        font-size: 14px;
+        &:before{
+            display: inline-block;;
+            margin-right: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 20px;
+            background: #fff;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            color: #1d6aa7;
+            content: '!';
+        }
+    }
+}
+.modalFooter{
+    height: 60px;
+    line-height: 60px;
+    margin: -10px -16px -10px -10px;
+    text-align: center;
+    button{
+        width: 82px;
+    }
+}

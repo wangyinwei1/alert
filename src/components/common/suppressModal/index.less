@@ -1,0 +1,58 @@
+@import "../../vars.less";
+@import '../../../theme/footerMixin.less';
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1        2        3        4         5        6         7        8
+@var_default : @green2, @blue84, @white0, @white0;
+@var_white   : @green3, @black1, @black0, @white4;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    // delete modal
+    .suppressWrap{
+      :global{
+        .ant-modal-body{
+          padding: 0px;
+        }
+      }
+      .suppressMain{
+        :global{
+          .ant-checkbox-wrapper > span:last-child {
+            color: extract(@var, 4);
+          }
+        }
+        padding: 35px;
+        i{
+          position: relative;
+          display: inline-block;
+          font-size: 45px;
+          line-height: 1;
+          color: extract(@var,1);
+          vertical-align: top;
+        }
+        & > div{
+          display: inline-block;
+          width: 80%;
+          margin-left: 25px;
+          p{
+            display: inline-block;
+          }
+          .title{
+            font-size: 16px;
+            line-height: 1.5;
+            color: extract(@var,3);
+          }
+          .content{
+            font-size: 14px;
+            color: extract(@var,2);
+            margin-bottom: 18px;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}

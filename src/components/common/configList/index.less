@@ -1,0 +1,183 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2       3        4        5         6         7       8         9        10       11        12         13        14       15        16        17        18      19        20       21       22       23       24        25        26       27        28        29       30      31
+@var_default : @blue27, @blue32, @blue32, @blue96, @blue55,  @blue28, @blue29, @blue30,  @white0, @red,  @blue102, @blue45, @white0;
+@var_white   : @white7, @black1, @black1, @white11, @white40, @white0, @white0, @white11, @black1, @red0, @blue8,   @white8, @blue8;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .listTable{
+      thead{
+        tr{
+          th{
+            background-color: extract(@var, 1);
+            color: extract(@var, 2);
+            border-bottom: 1px solid extract(@var, 4);
+            .orderTh{
+              color: extract(@var, 3);
+              &.orderTh-active{
+                color:  extract(@var, 3);
+              }
+            }
+          }
+          .orderTriangleDown {
+            border-top: 6px solid extract(@var, 5);
+          }
+          .orderTriangleUp {
+            border-bottom: 6px solid extract(@var, 5);
+          }
+        }
+      }
+      tbody{
+        .groupSpread{
+          td{
+            background-color: extract(@var, 6);
+          }
+        }
+        tr{
+          td{
+            .delBtn{
+              border: 1px solid extract(@var, 10);
+              background: extract(@var, 10);
+              span{
+                color: #fff;
+              }
+            }
+            .editBtn{
+              border: 1px solid extract(@var, 11);
+              background: extract(@var, 11);
+              span{
+                color: #fff;
+              }
+            }
+            color: extract(@var, 9);
+            border-bottom: 1px solid extract(@var, 8);
+            background-color: extract(@var, 7);
+          }
+          &.even{
+            td{
+              background-color: extract(@var, 6);
+            }
+          }
+          &.odd{
+            td{
+              background-color: extract(@var, 7);
+            }
+          }
+        }
+        tr.trGroup{
+          td {
+            background: extract(@var, 12);
+            color: extract(@var, 13);
+            .expandIcon{
+              background: #4082e6;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.listTable{
+  width: 100%;
+  border-collapse: collapse;
+
+  thead{
+    tr{
+      th{
+        position: relative;
+        height: 38px;
+        line-height: 38px;
+        text-align: left;
+        .orderTh{
+            cursor: pointer;
+            padding: 6px;
+            padding-left: 0px;
+        }
+        .orderTriangleDown {
+            position: absolute;
+            bottom: 30%;
+            width: 0;
+            height: 0;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            //border-top: 6px solid #acb3bf;
+            cursor: pointer;
+            transition: border-top .2s ease;
+            &:hover{
+                border-top: 6px solid #4082e6;
+            }
+            &.orderTriang-active{
+                border-top: 6px solid #4082e6;
+            }
+        }
+        .orderTriangleUp {
+            position: absolute;
+            top: 30%;
+            width: 0;
+            height: 0;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            text-align: center;
+            cursor: pointer;
+            transition: border-bottom .2s ease;
+            &:hover{
+                border-bottom: 6px solid #4082e6;
+            }
+            &.orderTriang-active{
+                border-bottom: 6px solid #4082e6;
+            }
+        }
+      }
+    }
+  }
+  tbody{
+    .hiddenChild{
+      display: none;
+    }
+    tr{
+      td{
+        :global{
+          .ant-btn[disabled]{
+            opacity: 0.5;
+            &:hover{
+              background-color: #d85735;
+              border-color: #d85735;
+            }
+          }
+        }
+        .delBtn{
+          font-weight: normal;
+        }
+        .editBtn{
+          font-weight: normal;
+        }
+        height: 50px;
+        line-height: 50px;
+        text-align: left;
+      }
+    }
+
+    tr.trGroup{
+      text-align: left;
+      .expandIcon{
+        display: inline-block;
+        margin: 18px 10px 0 12px;
+        width: 14px;
+        height: 14px;
+        line-height: 14px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,454 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/scrollbar.less';
+@border: 1px solid @white11;
+@borderBlueButton: 1px solid @blue18;
+@borderWhiteButton: 1px solid @white16;
+//蓝色和白色色系要上下一一对应
+//             1         2         3       4        5        6                   7        8        9        10       11        12        13           14    15       16       17       18       19        20       21
+@var_default : @blue19,  @blue14, @none,   @blue20, @iptBg,  @borderBlueButton,  @blue25, @white0, @blue11, @blue26, @blue41,  @blue11,  @iptBg,   @blue15, @blue11, @blue11, @blue16, @blue62, @blue17,  @white0, @blue151;
+@var_white   : @white13, @white0, @border, @white6, @white0, @borderWhiteButton, @white7, @white6, @white6, @white6, @white35, @white36, @white18, @blue8,  @blue13, @white6, @white0, @white6, @white30, @black0, @white4;
+
+.setTheme(@var_default, @var_white);
+
+
+.global {
+  .ant-select-dropdown-menu-item-active {
+    color: #FFFFFF
+  } // scrollbar
+   ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+   ::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+   ::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 2px;
+  }
+   ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+   ::-webkit-scrollbar-track {
+    width: 5px;
+  }
+   ::-webkit-scrollbar:hover {
+    background-color: transparent;
+  }
+  .ant-dropdown {}
+}
+
+div.delete {
+  float: right;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  line-height: 18px;
+  text-align:center;
+   :global .iconfont {
+    font-size: 8px;
+  }
+}
+
+.bgWrapper(){
+  background: #fff;
+  padding: 20px;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+.showBar {}
+
+.hideBar {
+  display: none
+}
+.getTheme(@var, @name){
+  :local{
+    .filterMenu {
+      .scrollBarMixin(@name);
+      background-color: extract(@var, 17);
+    }
+    div.delete {
+      background-color: extract(@var, 21);
+      color:#fff;
+    }
+    .alertQueryWrapper{
+       :global{
+         .refresh-top{
+           & when (@name = blue){
+            top:-52px;
+           }
+         }
+       }
+       & when (@name = white){
+        .bgWrapper()
+      }
+    }
+    .menuItem {
+      &:global.ant-dropdown-menu-item {
+        background-color: extract(@var, 17);
+        color: extract(@var, 18);
+        &:hover {
+          background-color: extract(@var, 19);
+          color: extract(@var, 20);
+        }
+      }
+      &:global.ant-select-dropdown-menu-item {
+        background-color: extract(@var, 17);
+        color: extract(@var, 18);
+      }
+      &:global.ant-dropdown-menu-submenu {
+        background-color: extract(@var, 17);
+        .ant-dropdown-menu-submenu-title {
+          color: extract(@var, 18);
+          &:after {
+            color: extract(@var, 18);
+          }
+          &:hover {
+            background-color: #3092d9;
+            color: #ffffff;
+            &:after {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+    .searchBar {
+      .myDropdown {
+        &:global.ant-btn-group {
+          :global .ant-btn {
+            background-color: extract(@var, 5);
+            border: extract(@var, 6);
+            color: extract(@var, 16);
+            &:hover {
+              border-color: extract(@var, 14);
+            }
+          }
+          :global .ant-btn:last-child {
+            background-color: extract(@var, 13);
+            color: extract(@var, 15);
+          }
+        }
+        button:first-child {
+          float: left;
+          &.disabled:hover {
+            background-color: extract(@var, 5);
+            color: extract(@var, 16);
+          }
+        }
+        button:last-child {
+          float: left;
+          background-color: extract(@var, 13);
+          border: extract(@var, 6);
+          color: extract(@var, 15);
+          &:hover {
+            border-color: extract(@var, 14);
+          }
+        }
+      }
+    }
+
+    .toggleBarButton {
+      background-color: extract(@var, 1);
+      width: 100%;
+      border: none;
+      height: 17px;
+    }
+    .toggleBarButton:hover {
+      background-color: extract(@var, 1);
+    }
+    .toggleBarButton:focus {
+      background-color: extract(@var, 1);
+    }
+    .wrapBorder{
+      border:extract(@var, 3)
+    }
+    .queryOperate {
+      position: relative;
+      background: extract(@var, 2);
+      border-bottom: extract(@var, 3);
+      padding: 15px 5px 15px 10px;
+      overflow: hidden;
+      .count {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 10px;
+        color: extract(@var, 4);
+        font-size: 13px;
+      }
+      .groupMain {
+        display: inline-block;
+        position: relative;
+        float: right;
+        .switch {
+          position: absolute;
+          left: 75px;
+          top: 4px;
+          color: #9dd7ff;
+          visibility: hidden;
+        }
+        &:hover .switch {
+          visibility: visible;
+        }
+      } // cover ant-design Select style on local
+      .selectSingle {
+        &.setGroup {
+          float: right;
+          width: 100px;
+        }
+      }
+      .button {
+        position: relative;
+        height: 30px;
+        display: inline-block;
+        border-radius: 3px; //border: 1px solid #d5ddeb;
+        background-color: extract(@var, 5);
+        border: extract(@var, 6);
+        margin-right: 10px;
+        cursor: pointer;
+        transition: border .2s;
+        &:hover {
+          background-color: extract(@var, 7);
+
+          span,
+          i {
+            color: extract(@var, 8);
+          }
+        }
+        &.rightBtn {
+          float: right;
+        }
+        p {
+          position: relative;
+          display: inline-block;
+          padding: 4px 10px;
+          font-size: 13px;
+          font-weight: normal;
+          text-align: center;
+          color: extract(@var, 9);
+          &.col {
+            padding-left: 5px;
+          }
+        }
+        .setCol {
+          position: relative;
+          display: inline-block;
+          top: 2px;
+          padding-left: 8px;
+          color: extract(@var, 10);
+        }
+      }
+    }
+    .popover {
+      // popover card
+      .popoverMain {
+        position: relative;
+        div:last-child {
+          margin-bottom: 5px;
+        }
+        .colGroup {
+          margin: 10px 10px 15px 10px;
+          width: 240px;
+          &>p {
+            color: extract(@var, 12);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 10px;
+            &:after {
+              position: relative;
+              content: " ";
+              display: inline-block;
+              height: 1px;
+              width: 90%;
+              background: extract(@var, 11);
+            }
+          }
+          .inlineItem {
+            display: inline-block;
+            width: 120px;
+            padding-bottom: 5px;
+            :global {
+              .ant-checkbox-wrapper+span,
+              .ant-checkbox+span {
+                display: inline-block;
+                white-space: nowrap;
+                max-width: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.toggleBarButtonIcon {
+  position: absolute;
+  top: 0px;
+}
+
+
+.searchBar {
+   :global .ant-form-item {
+    margin-bottom: 15px;
+  }
+  .searchBtn {
+    float: right;
+  }
+  .myDropdown {
+    position: relative !important;
+    float: right;
+    top: 0px !important;
+    width: 72px !important;
+    margin-left: 10px;
+    margin-right: 0px !important;
+    &:global.ant-btn-group {
+      margin-right: 10px;
+      height: 32px;
+      top: 0px;
+       :global .ant-btn {
+        font-size: 13px;
+        font-weight: normal;
+        padding: 4px 10px; //background: white;
+      }
+    }
+    button:first-child {
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+    button:last-child {
+      &:hover {
+        border-color: #2bb4f4;
+      }
+    }
+  }
+}
+
+.keywordArea {
+   :global .ant-form-item-control {
+    margin-top: 9px;
+  }
+}
+
+// no queryList
+.alertListInfo {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  margin-left: -100px;
+  margin-top: -10px;
+  color: #fff;
+  font-size: 14px;
+  &:before {
+    display: inline-block;
+    ;
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: #daab1c;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    content: '!';
+  }
+}
+
+.filterMenu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+// cover menuitem
+// cover menuitem
+.menuItem {
+  &:global.ant-dropdown-menu-item {
+    font-size: 13px;
+    font-weight: normal;
+    min-width: 135px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    div {
+      display: none
+    }
+    &:hover {
+      div {
+        display: block
+      }
+    }
+  }
+  &:global.ant-select-dropdown-menu-item {
+    font-size: 13px;
+    font-weight: normal;
+  }
+  &:global.ant-dropdown-menu-submenu {
+    font-size: 13px;
+    font-weight: normal;
+    .ant-dropdown-menu-submenu-title {
+      font-size: 13px;
+    }
+  }
+}
+
+.keywordsMenuItem {
+  &:global.ant-select-dropdown-menu-item {
+    padding: 7px 10px;
+    padding-left: 16px;
+  }
+}
+
+// cover Col style
+.rowStyle {
+  &>button {
+    position: absolute;
+    top: 0px;
+  }
+  .operateCol {
+    div {
+      width: 75%;
+      button {
+        margin-left: 10px;
+      }
+    }
+  }
+  .colStyle {
+    &>div:first-child {
+      &>div:last-child {
+        //width: 18%;
+        &>div {
+          &>div {
+            &>div {
+              border-top-right-radius: 0px;
+              border-bottom-right-radius: 0px;
+              border-right: none;
+            }
+          }
+        }
+      }
+    }
+    &>div:last-child {
+      margin-bottom: 0px;
+      &>div {
+        position: absolute;
+        top: -56px;
+        &>div {
+          &>input {
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+          }
+        }
+      }
+    }
+  }
+}

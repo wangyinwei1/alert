@@ -1,0 +1,198 @@
+@import '../../theme/mixin.less';
+.bgWrapper(){
+  background: #fff;
+  padding: 20px;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+//蓝色和白色色系要上下一一对应
+//             1         2         3        4         5        6         7         8        9         10       11        12       13        14       15       16       17       18        19        20       21       22       23        24       25        26       27        28        29       30      31
+@var_default : @blue125, @white0, @blue126, @blue127, @blue62, @blue128, @blue129, @blue62, @blue130, @blue77, @blue131, @blue41, @blue18,  @blue76, @blue84, @blue77, @white0, @blue15,  @blue41, @iptBg,  @blue132, @opacity, @blue41, @white0, @blue131;
+@var_white   : @white26, @black1, @blue8,   @white0,  @blue8,  @white0,  @white16, @black1, @white16, @blue8,  @white38, @white0, @white16, @white0, @black1, @white0, @blue8,  @white16, @black1, @white0, @white7,  @white11, @blue8,  @white4, @white4;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .submit {
+      background-color: extract(@var, 10);
+      color: #fff;
+    }
+  }
+
+  #RuleEditor {
+    & when (@name = white){
+      .bgWrapper()
+    }
+    color: extract(@var, 2);
+    h2 {
+      border-bottom: 2px solid extract(@var, 5);
+      color: extract(@var, 5);
+    }
+    & > div {
+      &:after {
+        background-color: extract(@var, 9);
+      }
+    }
+    .ant-tabs-tab {
+      border: 1px solid extract(@var, 13);
+      background-color: extract(@var, 14);
+      color: extract(@var, 15);
+    }
+    .ant-tabs-tab-active {
+      border-color: extract(@var, 10);
+      background-color: extract(@var, 16);
+      color: extract(@var, 17);
+      &:after {
+        border-color: transparent;
+      }
+    }
+    .ant-tabs-tab-disabled {
+      border-color: extract(@var, 13);
+      background-color: extract(@var, 20);
+      color: extract(@var, 19);
+      &:hover {
+        border-color: extract(@var, 18);;
+      }
+    }
+    .ant-tabs-tabpane {
+      background-color: extract(@var, 21);
+      border: 1px solid extract(@var, 22);
+      em {
+        color: extract(@var, 23);
+      }
+    }
+  }
+}
+
+:global {
+    .hidden {
+        display: none !important;
+    }
+    #RuleEditor {
+        padding-bottom: 200px;
+        h2 {
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          font-weight: normal;
+          font-size: 13px;
+          line-height: 48px;
+        }
+        & > div {
+          position: relative;
+          padding: 25px;
+          &:after {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 1px;
+            content: "";
+          }
+        }
+        :global {
+            .ant-select-selection {
+              border-radius: 2px;
+            }
+            .ant-input {
+              border-radius: 2px;
+            }
+            .ant-tabs-bar {
+              border-bottom: 0;
+              background-color: transparent;
+            }
+            .ant-tabs-tab {
+              margin-right: 10px;
+              padding: 0 12px;
+              width: auto;
+              height: 28px;
+              border-radius: 2px;
+              line-height: 28px;
+            }
+            .ant-tabs-tab-disabled {
+              opacity: .5;
+              cursor: not-allowed;
+              transition: .3s;
+              pointer-events: auto;
+            }
+            .ant-tabs-nav-scroll,
+            .ant-tabs-nav-wrap {
+              overflow: visible;
+            }
+            .ant-tabs-tab-active {
+              position: relative;
+              margin-bottom: 0;
+              &:after {
+                position: absolute;
+                top: 26px;
+                left: 50%;
+                display: block;
+                margin-left: -8px;
+                width: 0;
+                height: 0;
+                border-width: 8px;
+                border-style: solid;
+                content: "";
+              }
+            }
+            .ant-tabs-tabpane {
+              margin-top: 15px;
+              padding: 30px 25px;
+              em {
+                display: block;
+                margin-bottom: 20px;
+                font-style: normal;
+              }
+            }
+        }
+    }
+
+}
+
+// .level1 {
+//     margin-left: 10px;
+// }
+// .level2 {
+//     margin-left: 20px;
+// }
+// .level3 {
+//     margin-left: 30px;
+// }
+
+.submit {
+  display: inline-block;
+  margin-left: 25px;
+  width: 90px;
+  height: 32px;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+// .timeMessage {
+//     margin-top: 20px;
+//     padding: 15px;
+//     border: 1px dashed #2769A2;
+//     line-height: 1;
+// }
+
+
+// .actionITSM {
+//     & > div {
+//         padding-right: 35%;
+//     }
+//     .text {
+//         display: block;
+//         // margin-top: 20px;
+//         height: 300px;
+//     }
+//     .tip {
+//         margin-top: 20px !important;
+//         margin-bottom: 0 !important;
+//         line-height: 1.5;
+//     }
+// }
+

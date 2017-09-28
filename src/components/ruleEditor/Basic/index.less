@@ -1,0 +1,110 @@
+@import '../../../theme/mixin.less';
+
+// --------- set Color --------- //
+// --------- 蓝白序号需要对应 --------- //
+// ---------  1         2        3         4
+@var_default: @blue125, @white0, @blue126, @blue127;
+@var_white: @white26, @black1, @blue8,   @white0;
+.setTheme(@var_default, @var_white);
+
+// --------- Color --------- //
+.getTheme(@var, @name) {
+  .baseInfo {
+      color: extract(@var, 2);
+  }
+  .timeCycleBd {
+    background-color: extract(@var, 4);
+    :global {
+      p {
+        color: extract(@var, 2);
+      }
+    }
+  }
+  .timeCycleHd {
+    & > span {
+      background-color: extract(@var, 1);
+      color: extract(@var, 2);
+    }
+    :global {
+      .active {
+        background-color: extract(@var, 3);
+        color: #fff;
+      }
+    }
+  }
+}
+
+// --------- Other Styles --------- //
+.baseInfo {
+    font-size: 14px;
+}
+.hidden {
+    display: none;
+}
+.pickTimeWrap {
+    margin-top: 20px;
+    .selectTime {
+        display: inline-block;
+        margin-left: 0;
+        padding: 0 10px;
+        height: 32px;
+        border-radius: 2px;
+        color: #5994D6;
+        line-height: 32px;
+        cursor: pointer;
+    }
+}
+
+.timeCycle {
+    overflow: hidden;
+    // 日期组件样式
+    .calendar {
+        width: auto;
+        :global {
+            .rc-calendar-range-part {
+                width: 240px;
+            }
+        }
+    }
+}
+.timeCycleHd {
+  & > span {
+    display: inline-block;
+    margin-right: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+  }
+  :global {
+    .active {
+      cursor: default;
+    }
+  }
+}
+.timeCycleBd {
+  margin-top: 15px;
+  padding: 20px 15px;
+  max-width: 485px;
+  border-radius: 2px;
+  :global {
+    p {
+      margin-bottom: 20px;
+    }
+    .ant-checkbox-wrapper {
+      margin-right: 0;
+      margin-bottom: 15px;
+      width: 10%;
+    }
+    .ant-time-picker {
+      width: 125px;
+    }
+    .weekCycle {
+      .ant-checkbox-wrapper {
+          width: 20%;
+      }
+    }
+  }
+}

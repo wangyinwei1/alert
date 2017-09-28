@@ -1,0 +1,51 @@
+@import "../../vars.less";
+@import "../../../theme/footerMixin.less";
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2        3          4         5         6         7        8         9
+@var_default : @blue100, @blue138, @blue139, @blue122, @blue16,  @blue140, @white0, @opacity, @white0;
+@var_white   : @white6,  @white11, @white7,  @black0,  @white11, @white0,  @black1, @white11, @blue8;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    .mergeTable{
+        .title{
+            font-size: 13px;
+            //color: #828b99;
+            color: extract(@var, 1);
+            margin-bottom: 10px;
+        }
+        :global{
+            .ant-table-body {
+              border: 1px solid extract(@var, 8);
+              border-bottom: none;
+            }
+            .ant-table-thead{
+                tr {
+                    border-bottom: 2px solid extract(@var, 2);
+                }
+                tr > th{
+                    background:  extract(@var, 3);
+                    color: extract(@var, 4);
+                }
+            }
+            .ant-table-tbody > tr:hover{
+                background: #164f7d;
+            }
+            .ant-table-tbody > tr > td {
+                color: extract(@var, 7);
+                border-bottom: 1px solid extract(@var, 5);
+                background: extract(@var, 6);
+                position: relative;
+            }
+        }
+        .remove{
+            color: extract(@var, 9);
+        }
+    }    
+  }
+}
+

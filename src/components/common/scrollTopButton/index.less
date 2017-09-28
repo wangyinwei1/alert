@@ -1,0 +1,48 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1       
+@var_default : #55abe0;
+@var_white   : #4082e6;
+
+.setTheme(@var_default, @var_white);
+
+.scrollTopDiv {
+  bottom: 20px;
+  right: 15px;
+  display: block;
+}
+
+.scrollTopIconDiv {
+  line-height: 30px;
+
+}
+.getTheme(@var, @name){
+  :local {
+    .backCtrl {
+      width: 34px;
+      height: 34px;
+      background: extract(@var, 1);
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 2px;
+      padding-top: 4px;
+      i {
+        font-size: 30px;
+      }
+    }
+  }
+}
+.backCtrl:hover {
+  .backText {
+    display: block
+  }
+}
+
+.backText {
+  font-size: 14px;
+  line-height: 14px;
+  // line-height: 14px;
+}

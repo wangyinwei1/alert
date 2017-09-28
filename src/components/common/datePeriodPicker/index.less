@@ -1,0 +1,30 @@
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1      
+@var_default : @blue54;
+@var_white   : @white6;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local {
+    .timeCycle {
+        overflow: hidden;
+        
+        // 日期组件样式
+        .calendar {
+            width: auto;
+            :global {
+                .rc-calendar-range-part {
+                    width: 240px;
+                }
+            }
+        }
+        .shanchux {
+          color: extract(@var, 1);
+          font-size: 11px;
+
+        }
+    }
+  }
+}

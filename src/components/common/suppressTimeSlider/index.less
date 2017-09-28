@@ -1,0 +1,88 @@
+@import "../../vars.less";
+@import '../../../theme/footerMixin.less';
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1        2         3        
+@var_default :  @blue47, @white0, @blue156;
+@var_white   :  @white0, @white6, @white4;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    .timeLoop(@counter) when (@counter > 0) {
+      .timeMarks@{counter} {
+        .ant-slider-handle {
+            @count: @counter / 2 - 0.5;
+            &:after {
+                content: '@{count}';
+            }
+        }
+      }
+      .timeLoop(@counter - 1);
+    }
+
+    .timeSlider{
+      color: extract(@var, 2);
+      padding: 45px 115px;
+      text-align: center;
+      & > p {
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+      :global {
+        .timeLoop(49);
+        .ant-slider {
+          height: 2px;
+          border: none;
+          background-color: extract(@var, 1);
+        }
+        .ant-slider-track {
+          height: 0;
+        }
+        .ant-slider-step {
+          height: 14px;
+          top: -4px;
+        }
+        .ant-slider-handle {
+          border: none;
+          width: 14px;
+          height: 14px;
+          &:after {
+            display: block;
+            width: 14px;
+            height: 14px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            content: ' ';
+            color: extract(@var, 3);
+            font-size: 10px;
+          }
+        }
+      }
+      .hours{
+        :global{
+        .ant-slider-handle {
+            &:after{
+              top: 20px
+            }
+          }
+        }
+        &:before{
+          position: absolute;
+          content: '0h';
+          left: -30px;
+          top: -7px;
+        }
+        &:after{
+          position: absolute;
+          content: '24h';
+          right: -30px;
+          top: -7px;
+        }
+      }
+    }
+  }
+}

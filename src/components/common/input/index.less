@@ -1,0 +1,26 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+//              1
+@var_default : @yellow-light;
+@var_white:   @red;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name) {
+  :local {
+    .inputArea {
+      position: relative;
+      .countArea {
+        position: absolute;
+        right: 5px;
+        bottom: 0px;
+        opacity: 0.5
+      }
+      .warn {
+        color: extract(@var, 1)
+      }
+    }
+  }
+}
+
+

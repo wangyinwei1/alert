@@ -1,0 +1,115 @@
+@import "../../vars.less";
+@import "../common.less";
+.baseStyle();
+.skinStyle();
+
+@import '../../../theme/mixin.less';
+//蓝色和白色色系要上下一一对应
+//             1       2        3         4       5         6         7         8        9
+@var_default : @blue6, @blue5,  @blue6,   @blue6,  @white0, @blue18,  @iptBg,   @blue18, @blue21;
+@var_white   : @white0, @blue8, @white16, @blue72, @white6, @white16, @white18, @blue13, @blue8;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .detailView {
+      .viewContent {
+        position: relative;
+        :global {
+          .ant-radio-button-wrapper {
+            background-color: extract(@var, 1);
+            border-color: extract(@var, 3);
+            color: extract(@var, 5);
+          }
+          .ant-radio-button-wrapper-checked {
+            background-color: extract(@var, 2);
+            border-color: extract(@var, 4);
+            color:#fff;
+          }
+          .ant-form-item-control {
+            line-height: 0px;
+          }
+          .ant-form-item-control-wrapper {
+            line-height: 1
+          }
+        }
+        .showItem {
+          display: block;
+        }
+        .hideItem {
+          display: none;
+        }
+        .shortInput {
+          width: 78px;
+          line-height: 1.5;
+        }
+        .mapFieldTextarea {
+          height: 194px;
+          line-height: 1.5;
+        }
+        .step1,
+        .step2 {
+          .secondForm {
+            a {
+              color: extract(@var, 9);
+            }
+            width: 700px;
+            label {
+              float: left
+            }
+            .overTime {
+              width: 50px
+            }
+            div.num {
+              line-height: 13px;
+            }
+            span.msg {
+              color: extract(@var, 5);
+              margin-left: 8px;
+              line-height: 1.5;
+            }
+            span.fieldMapMsg {
+              color: extract(@var, 5);
+              line-height: 1.5;
+            }
+            span.overTimeMsg {
+              color: extract(@var, 5);
+              line-height: 1.5;
+            }
+            span.returnBlankMsg {
+              margin-left: 86px;
+              color: extract(@var, 5);
+            }
+            :global {
+              .ant-input-number-handler-wrap{
+                 border-color:extract(@var, 6);
+                 background-color: extract(@var, 1);
+              }
+              .ant-input-number {
+                background-color: transparent;
+                border-color: extract(@var, 3);
+              }
+              .ant-input-number-handler-up,.ant-input-number-handler-down {
+                border-color:extract(@var, 6);
+                background-color: extract(@var, 7);
+              }
+              .ant-input-number-handler-wrap .ant-input-number-handler-up-inner,.ant-input-number-handler-wrap .ant-input-number-handler-down-inner {
+                color: extract(@var, 8);
+              }
+              .ant-input-number input{
+                background-color: extract(@var, 1);
+                color: extract(@var, 5);
+              }
+              .ant-form-item-control {
+                line-height: 0px;
+              }
+              .ant-form-item-control-wrapper {
+                line-height: 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

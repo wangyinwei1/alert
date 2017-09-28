@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  
+  <style type="text/css">
+  	body{
+		font-family: Microsoft YaHei,Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
+		font-size: 13px;
+		color: #fff;
+	}
+	pre{
+		font-family: Microsoft YaHei,Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
+	}
+	td{
+		padding: 5px;
+		margin-bottom: 5px;
+		border: 1px solid #1f528b;
+	}
+	table{
+	    border-collapse: collapse;
+	}
+	.table-list thead{
+		background-color: #143355;
+		color: #4a88b6;
+		border-bottom: 1px solid #1f528b;
+	}
+	p{
+		font-size: 14px;
+		color: #6ec2ff;
+		margin-bottom: 18px;
+	}
+  .white td{
+		border: 1px solid #e4e7eb;
+	}
+  .white body{
+		color: #6c7480;
+	}
+  .white .table-list thead{
+		background-color: #f8fbfd;
+		color: #4c5159;
+		border-bottom: 1px solid #e4e7eb;
+	}
+  .white p{
+		color: #6c7480;
+	}
+  </style>
+ </head>
+ <body onload="getUrl()">
+  <div>
+	<table class="table-bordered table" width="100%">
+		<tbody>
+			<tr><td>URL</td><td id='url'></td></tr>
+			<tr><td>Call</td><td>POST</td></tr>
+			<tr><td>Authentication</td><td>Not required</td></tr>
+			<tr>
+				<td>Params(body)</td>
+				<td>
+					<pre>
+{
+	"severity":       3,
+	"name":           "CPU overloaded",
+	"description":    "CPU is above upper limit (80%)%",
+	"occur_time":     1490251916807,
+	"entity_name":    "PC Server",
+	"entity_addr":    "10.2.1.2",
+	"merge_key":      "entity_name,name",
+	"identify_key":   "entity_name,entity_addr",
+	"properties":     [
+		{
+			"val": "dataCenter_A",
+			"code": "location",
+			"name":	"Location"
+		}
+	]
+}</pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Parameters:</p>
+	<table class="table-list" width="100%">
+		<thead>
+			<tr><td>Filed</td><td>Required</td><td>Empty</td><td>Description</td></tr>
+		</thead>
+		<tbody>
+			<tr><td>severity</td><td>Not required</td><td>Empty</td><td>Severity of alert:Critical 1, Warning 2, Information3, OK 4</td></tr>
+			<tr><td>name</td><td>Not required</td><td>Empty</td><td>Alert Name</td></tr>
+			<tr><td>description</td><td>required</td><td>Not Empty</td><td>Additional text information</td></tr>
+			<tr><td>occur_time</td><td>Not required</td><td>Empty</td><td>Time that the alert occurred</td></tr>
+			<tr><td>entity_name</td><td>required</td><td>Not Empty</td><td>The entity</td></tr>
+			<tr><td>entity_addr</td><td>Not required</td><td>Empty</td><td>IP address that the alert occurred</td></tr>
+			<tr><td>merge_key</td><td>Not Required</td><td>Empty</td><td>Merging Alerts into Incident</td></tr>
+			<tr><td>indentify_key</td><td>Not Required</td><td>Empty</td><td>Specify the keys to locate CI in CMDB. Keys accepted: entity_name, entity_addr, and the code in [properties]</td></tr>
+			<tr><td>properties</td><td>Not required</td><td>Empty</td><td>Additional attributes，please use the name, key, value JSON pairs</td></tr>
+		</tbody>
+	</table>
+	<p>Send a Test Alert</p>
+	<pre id="example">
+curl -H "Content-type: application/json;charset=utf-8" -X POST -d '
+	{
+    "name":"activemq.broker.memory_pct-ActiveMQ Memery overloaded",
+    "severity":3,
+    "description":"ActiveMQ Memery above upper limit (3%)%",
+    "occur_time":1490251916807,
+    "entity_name":"PC20151218",
+    "entity_addr":"10.1.113.28",
+    "merge_key":"entity_name,name",
+    "identify_key":"entity_name,entity_addr",
+    "properties":[{"val": "Financial","code": "belong","name": "Department"}]
+	}
+' </pre>
+	</div>
+ </body>
+ <script>
+    var skinType = window.parent.document.getElementsByTagName('html')[0].className;
+    document.getElementsByTagName('html')[0].className = skinType;
+  </script>
+ <script>
+ 	function getUrl() {
+		document.getElementById('url').innerText = window.parent.__alert_restApiUrl
+		document.getElementById('example').innerText = document.getElementById('example').innerText + window.parent.__alert_restApiUrl;
+	}
+	window.addEventListener('message', function(e){
+		var len = document.getElementById('example').innerText.length;
+		if(e.source!=window.parent) return;
+		document.getElementById('url').innerText = document.getElementById('url').innerText + '&app_key=' + e.data
+		document.getElementById('example').innerText = document.getElementById('example').innerText.slice( 0, len) + '\\&app_key=' + e.data
+	}, false);
+ </script>
+</html>

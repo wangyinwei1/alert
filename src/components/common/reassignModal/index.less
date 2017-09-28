@@ -1,0 +1,64 @@
+@import '../../../theme/mixin.less';
+@import '../../../theme/footerMixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2        3        4        5         6        7
+@var_default : @blue64,  @blue22, @blue21, @blue21,  @white0, @blue22, @blue22;
+@var_white   : @white42, @blue72, @white0, @white11, @black1, @white9, @white16;
+
+.setTheme(@var_default, @var_white);
+.modalFooterMixin() {
+  height: 60px;
+  line-height: 60px;
+  margin: -10px -16px -10px -10px; 
+  background: extract(@var, 1);
+  text-align: center;
+  button {
+    width: 82px;
+    &:hover{
+      background: extract(@var, 2);
+    }
+    &:nth-child(2){
+      background:extract(@var, 3);;
+      color: extract(@var, 5);
+      border-color: extract(@var, 4);
+      &:hover{
+        background: extract(@var, 6);
+        border-color: extract(@var, 7);
+      }
+    } 
+  }
+  .ghostBtn {
+    color: #fff;
+    background-color: #108ee9;
+    border-color: #108ee9;
+    &:hover {
+      color: #fff;
+      background-color: #49a9ee;
+      border-color: #49a9ee;
+    }
+  }
+}
+
+.getTheme(@var, @name) {
+  :local{
+    .reassignModalMain {
+      font-size: 14px;
+      padding: 5px 50px 5px 50px;
+      .specificUser:before {
+        display: inline-block;
+        margin-right: 4px;
+        content: "*";
+        font-family: SimSun;
+        line-height: 1;
+        font-size: 12px;
+        color: #f04134;
+      }
+    }
+    // .modalFooter {
+    //   .modalFooterMixin();
+    // }
+    // common modal footer
+    
+  }
+}

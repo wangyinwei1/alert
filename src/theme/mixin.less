@@ -1,0 +1,23 @@
+@import 'vars_color.less';
+@skinType: white, blue; //有几种换肤的变量(目前为两种)
+
+//根据皮肤种类循环两份样式
+.setTheme(@var_default, @var_white){
+  .for(@num, @i: 1) when (@i =< @num){
+    @name: extract(@skinType, @i);
+    :global {
+      .@{name}{
+        & when (@name = blue){
+          @var: @var_default;
+          .getTheme(@var, @name)
+        }
+        & when (@name = white){
+          @var: @var_white;
+          .getTheme(@var, @name)
+        }
+      }
+    }
+    .for(@num, (@i+1))
+  }
+  .for(length(@skinType));
+}

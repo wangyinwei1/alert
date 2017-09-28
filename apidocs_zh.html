@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+  	body{
+		font-family: Microsoft YaHei,Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
+		font-size: 13px;
+		color: #fff;
+	}
+	pre{
+		font-family: Microsoft YaHei,Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
+	}
+	td{
+		padding: 5px;
+		margin-bottom: 5px;
+		border: 1px solid #1f528b;
+	}
+	table{
+	    border-collapse: collapse;
+	}
+	.table-list thead{
+		background-color: #143355;
+		color: #4a88b6;
+		border-bottom: 1px solid #1f528b;
+	}
+	p{
+		font-size: 14px;
+		color: #6ec2ff;
+		margin-bottom: 18px;
+	}
+  .white td{
+		border: 1px solid #e4e7eb;
+	}
+  .white body{
+		color: #6c7480;
+	}
+  .white .table-list thead{
+		background-color: #f8fbfd;
+		color: #4c5159;
+		border-bottom: 1px solid #e4e7eb;
+	}
+  .white p{
+		color: #6c7480;
+	}
+  </style>
+ </head>
+ <body onload="getUrl()">
+  <div>
+	<table class="table-bordered table" width="100%">
+		<tbody>
+			<tr><td>URL</td><td id='url'></td></tr>
+			<tr><td>调用方式</td><td>POST</td></tr>
+			<tr><td>认证</td><td>不需要登录认证</td></tr>
+			<tr>
+				<td>消息体参数(body)</td>
+				<td>
+					<pre>
+{
+	"severity":       3,
+	"name":           "system.mem.pct_usage-CPU利用率",
+	"description":    "内存使用率超过80%",
+	"occur_time":     1490251916807,
+	"entity_name":    "PC Server",
+	"entity_addr":    "10.2.1.2",
+	"merge_key":      "entity_name,name",
+	"identify_key":   "entity_name,entity_addr",
+	"properties":     [
+		{
+			"val": "dataCenter_A",
+			"code": "location",
+			"name":	"Location"
+		}
+	]
+}</pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>参数列表:</p>
+	<table class="table-list" width="100%">
+		<thead>
+			<tr><td>参数</td><td>是否必须</td><td>可否为空</td><td>备注</td></tr>
+		</thead>
+		<tbody>
+			<tr><td>severity</td><td>可选</td><td>可为空</td><td>告警级别: Critical 3, Warning 2, Information 1, OK 0</td></tr>
+			<tr><td>name</td><td>可选</td><td>可为空</td><td>告警名称</td></tr>
+			<tr><td>description</td><td>必须</td><td>不可为空</td><td>告警描述</td></tr>
+			<tr><td>occur_time</td><td>可选</td><td>可为空</td><td>发生时间</td></tr>
+			<tr><td>entity_name</td><td>必须</td><td>不可为空</td><td>告警对象</td></tr>
+			<tr><td>entity_addr</td><td>可选</td><td>可为空</td><td>告警对象地址</td></tr>
+			<tr><td>merge_key</td><td>可选</td><td>可为空</td><td>指定用于告警合并的字段，如果有多个字段请用逗号隔开。可选范围：entity_name,entity_addr,app_key,name,properties中的字段的code</td></tr>
+			<tr><td>identify_key</td><td>可选</td><td>可为空</td><td>用于定位统一资源库的资源，如果有多个字段请用逗号隔开。可选范围：entity_name,entity_addr,properties中的字段的code</td></tr>
+			<tr><td>properties</td><td>可选</td><td>可为空</td><td>告警的扩展字段，请使用 name, code, val的形式</td></tr>
+		</tbody>
+	</table>
+	<p>POST body方式</p>
+	<pre id="example">
+curl -H "Content-type: application/json;charset=utf-8" -X POST -d '
+  {
+    "name":"activemq.broker.memory_pct-ActiveMQ内存使用率",
+    "severity":3,
+    "description":"ActiveMQ内存使用率超过3%",
+    "occur_time":1490251916807,
+    "entity_name":"PC20151218",
+    "entity_addr":"10.1.113.28",
+    "merge_key":"entity_name,name",
+    "identify_key":"entity_name,entity_addr",
+    "properties":[{"val": "派出所","code": "belong","name": "所属单位"}]
+  }
+' </pre>
+	</div>
+ </body>
+ <script>
+  var skinType = window.parent.document.getElementsByTagName('html')[0].className;
+  document.getElementsByTagName('html')[0].className = skinType;
+ </script>
+ <script>
+ 	function getUrl() {
+		document.getElementById('url').innerText = window.parent.__alert_restApiUrl
+		document.getElementById('example').innerText = document.getElementById('example').innerText + window.parent.__alert_restApiUrl;
+	}
+	window.addEventListener('message', function(e){
+		var len = document.getElementById('example').innerText.length;
+		if(e.source!=window.parent) return;
+		document.getElementById('url').innerText = document.getElementById('url').innerText + '&app_key=' + e.data
+		document.getElementById('example').innerText = document.getElementById('example').innerText.slice( 0, len) + '\\&app_key=' + e.data;
+	}, false);
+ </script>
+</html>

@@ -3,7 +3,7 @@ var config = require('./w.config');
 // dev环境配置
 module.exports = {
   devtool: config.devtool,
-  entry: config.entry,
+  entry: ["babel-polyfill", config.entry],
   output: {
     path: __dirname + '/server',
     filename: 'app.js',

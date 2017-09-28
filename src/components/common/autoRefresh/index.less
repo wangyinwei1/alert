@@ -1,0 +1,27 @@
+// switch
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1       
+@var_default : @blue38,  -30px;
+@var_white   : @white41, -55px;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name) {
+  :local{
+    .alertSwitch{
+        position: absolute;
+        display: inline-block;
+        top: extract(@var, 2);
+        right: 0px;
+        span:first-child{
+            position: relative;
+            top: 2px;
+            color: extract(@var, 1);
+            font-size: 12px;
+            margin-right: 10px;
+        }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{	"path": "root",
+	"children":[
+	{
+	"path": "unit",
+	"children": [
+	{
+	"path": "unit/mvrg547t7w",
+	"value": 1,
+	"maxSeverity": 0
+	},
+	  {
+		"path": "unit/aa",
+		"value": 5,
+		"maxSeverity": 2
+	  },
+	{
+	"path": "unit/mvrg547t7w2",
+	"value": 3,
+	"maxSeverity": 3
+	}
+	],
+	"name": "单位",
+	"value": 2
+	},
+	{
+	"path": "responsible",
+	"children": [
+	{
+	"path": "responsible/4771i8",
+	"value": 1,
+	"maxSeverity": 2
+	},
+	  {
+		"path": "responsible/55",
+		"value": 2,
+		"maxSeverity": 2
+	  }
+	],
+	"name": "责任人",
+	"value": 1
+	},
+	{
+	"path": "location",
+	"children": [
+	{
+	"path": "location/7l05cap4nocgaombrnya",
+	"value": 1,
+	"maxSeverity": 1
+	},
+	{
+	"path": "location/eee",
+	"value": 2,
+	"maxSeverity": 0
+	}
+	],
+	"name": "地理位置",
+	"value": 3
+	}
+]
+}

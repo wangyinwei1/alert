@@ -1,0 +1,618 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+@import '../../../theme/footerMixin.less';
+//蓝色和白色色系要上下一一对应
+//             1         2         3         4         5        6        7        8         9        10        11        12        13        14        15        16        17        18        19        20        21        22        23        24        25        26       27        28        29        30      31       32        33       34       35
+@var_default : @blue105, @opacity, @blue106, @blue107, @white0, @white0, @blue11, @blue108, @white0, @blue109, @blue110, @blue111, @blue112, @blue113, @blue114, @blue114, @blue115, @blue76,  @blue116, @blue117, @blue118, @blue119, @blue120, @white0, @blue121, @blue122, @blue122, @blue123, @blue116, @red,  @blue124, @blue116, @iptBg,  @blue18, @blue15;
+@var_white   : @white0,  @white11, @blue8,   @black0,  @white4, @blue8,  @white4, @white26, @black0, @white7,  @black1,  @white11, @white0,  @white0,  @white11, @opacity, @blue13,  @white45, @white7,  @black1,  @white11, @white0,  @white0,  @black1, @blue8,   @white4,  @red1,    @blue8,   @white14, @red0, @blue8,   @white0,  @blue8,  @blue8,  @blue8;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .detailView{
+      background-color: extract(@var, 1);
+      border: 1px solid extract(@var, 2);
+      .viewHeader{
+        .headerIcon{
+          color: extract(@var, 3);
+        }
+        .headerContent{
+          p{
+            color: extract(@var, 4);
+            a{
+              color: #6ec2ff;
+              border-bottom: 1px solid #4a8cc3;
+              &:hover{
+                  color: #3498df;
+              }
+            }
+          }
+        }
+      }
+      .viewContent{
+        .stepLine{
+          background: extract(@var, 8);
+        }
+        .step1, .step2{
+          .viewForm{
+            .nameInput{
+              color: extract(@var, 7);
+            }
+          }
+          & .readOnly{
+            color: extract(@var, 6);
+          }
+          & .createBtn{
+            background-color: extract(@var, 33);
+            border-color: extract(@var, 34);
+            &:hover{
+              border-color: extract(@var, 35);;
+            }
+          }
+          & > span:first-child{
+            background: extract(@var, 8);
+          }
+          .step1Icon{
+            &:before{
+              color: extract(@var, 9);
+            }
+          }
+          
+          .step2Icon{
+            &:before{
+              color: extract(@var, 9);
+            }
+          }
+          .stepName{
+            color: extract(@var, 4);
+          }
+          .stepMessage{
+            color: extract(@var, 5);
+          }
+          .stepExample{
+            color: #9dd6ff;
+          }
+          .ruleTable{
+            border: 1px solid extract(@var, 2);
+            :global{
+              .ant-table-thead > tr > th{
+                background: extract(@var, 10);
+                color: extract(@var, 11);
+                border-bottom: 2px solid extract(@var, 12);
+              }
+              .ant-table-tbody > tr > td{
+                border-bottom: 1px solid extract(@var, 15);
+                color: extract(@var, 24);
+                :local{
+                  .delBtn{
+                    border: 1px solid extract(@var, 30);
+                    background: extract(@var, 30);
+                    span{
+                      color: #fff;
+                    }
+                  }
+                  .editBtn{
+                    border: 1px solid #2096e0;
+                    background: #2096e0;
+                    span{
+                      color: #fff;
+                    }
+                  }
+                }
+              }
+              .ant-table-tbody > tr:nth-child(odd){
+                  background: extract(@var, 14);
+              }
+              .ant-table-tbody > tr:nth-child(even){
+                  background: extract(@var, 13);
+              }
+              .ant-table-tbody > tr:hover > td{
+                  background: none;
+              }
+              .ant-table-placeholder{
+                  border-bottom: 1px solid extract(@var, 16);
+                  background: extract(@var, 13);
+                  color: extract(@var, 11);
+              }
+            }
+          }
+        }
+      }
+    }
+    .ruleMain{
+      .ruleForm{
+        :global{
+          .ant-form-item{
+            :local{
+              .mergeMessage{
+                color: extract(@var, 26);
+                &:before{
+                    color: extract(@var, 27);
+                }
+              }
+            }
+          }
+        }
+        // input + Icon
+        .composeContainer{
+          .composeIcon{
+            color: extract(@var, 25);
+          }
+        }
+        .modalTable{
+          border: 1px solid extract(@var, 2);
+          .regex{
+            background: extract(@var, 29);
+            color: extract(@var, 28);
+            &:hover{
+              color: #94d1fc;
+            }
+          }
+          .extends{
+            .clear{
+                color: extract(@var, 28);
+            }
+          }
+          .ghostBtn{
+            color: #fff;
+            background-color: #108ee9;
+            border-color: #108ee9;
+            &:hover{
+              color: #fff;
+              background-color: #49a9ee;
+              border-color: #49a9ee;
+            }
+          }
+          .result{
+            color: #fe704b;
+          }
+          .expression{
+              color: extract(@var, 24);
+          }
+          :global{
+            .ant-table-thead > tr > th{
+              background: extract(@var, 19);
+              color: extract(@var, 20);
+              border-bottom: 2px solid extract(@var, 21);
+            }
+            .ant-table-tbody > tr > td{
+              border-bottom: 1px solid extract(@var, 21);
+              color: extract(@var, 24);
+              :local{
+                .delBtn{
+                  border: 1px solid extract(@var, 30);
+                  background: extract(@var, 30);
+                  span{
+                      color: #fff;
+                  }
+                }
+                .editBtn{
+                  border: 1px solid #2096e0;
+                  background: #2096e0;
+                  span{
+                      color: #fff;
+                  }
+                }
+                .saveIcon, .editIcon, .deleIcon{
+                  color: #fff;
+                }
+              }
+            }
+            .ant-table-tbody > tr:nth-child(odd){
+              background: extract(@var, 22);
+            }
+            .ant-table-tbody > tr:nth-child(even){
+              background: extract(@var, 22);
+            }
+            .ant-table-tbody > tr:hover > td{
+              background: none;
+            }
+            .ant-table-placeholder{
+              border-bottom: 1px solid extract(@var, 21);
+              background: extract(@var, 23); 
+              color: extract(@var, 20); 
+            }
+            // select filed
+            .ant-select-search--inline .ant-select-search__field{
+              color: #fff;
+            }
+          }
+        }
+        ul.filterContainer{
+          & > li{
+            border: 1px dashed extract(@var, 17);
+            .shanChu{
+              color: extract(@var, 18);
+            }
+          }
+        }
+        .alertMessage{
+          color: #70c3fb;
+          &:before{
+            color: #70c3fb;
+          }
+        }
+      }
+    }
+    .popover{
+      :global{
+        .ant-popover-content{
+          .ant-popover-inner{
+            background-color: extract(@var, 36);
+            .ant-popover-inner-content{
+              color: extract(@var, 24);
+            }
+          }
+        }
+      }
+      .popoverMain{
+        span{
+          color: extract(@var, 31);
+          &.selected{
+            color:  extract(@var, 24);
+          }
+          &:hover{
+            color: extract(@var, 24);
+          }
+        }
+      }
+    }
+  }
+}
+
+.detailView{
+  padding: 16px 30px;
+  .viewHeader{
+    position: relative;
+    .headerIcon{
+      font-size: 45px;
+    }
+    .headerContent{
+      position: absolute;
+      top: 5px;
+      left: 58px;
+      font-size: 13px;
+      .headerName{
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 10px;
+      }
+      p{
+        margin-left: 5px;
+        a{
+          margin-left: 12px;
+        }
+      }
+      }
+  }
+    .viewContent{
+      position: relative;
+      .stepLine{
+        top: 40px;
+        position: absolute;
+        display: inline-block;
+        width: 3px;
+        left: 20px;
+        height: 169px;
+      }
+        .step1, .step2{
+          position: relative;
+          padding-top: 20px;
+          padding-left: 58px;
+          margin-bottom: 50px;
+            .viewForm{
+              display: inline-block;
+              vertical-align: top;
+              :global{
+                .ant-form-item{
+                  margin-bottom: 0px;
+                  .ant-form-item-control{
+                    line-height: 0px;
+                    .ant-input-lg{
+                      height: 28px;
+                    }
+                  }
+                }
+              }
+              .nameInput{
+                width: 200px;
+              }
+            }
+            & .readOnly{
+              margin-top: 10px;
+              font-size: 13px;
+            }
+            & .createBtn{
+              margin-left: 10px;  
+            }
+            & > span:first-child{
+              position: absolute;
+              top: 16px;
+              left: 8px;
+              width: 28px;
+              height: 28px;
+              border-radius: 100%;
+              display: inline-block;
+              z-index: 1
+            }
+            .step1Icon{
+              &:before{
+                display: inline-block;
+                content: '1';
+                font-size: 13px;
+                position: relative;
+                top: 4px;
+                left: 10px;
+              }
+            }
+            .step2Icon{
+              &:before{
+                display: inline-block;
+                content: '2';
+                font-size: 13px;
+                position: relative;
+                top: 4px;
+                left: 10px;
+              }
+            }
+            .stepName{
+              font-size: 14px;
+              margin-bottom: 18px;
+            }
+            .stepMessage{
+              font-size: 13px;
+              margin-bottom: 10px;
+            }
+            .stepExample{
+              font-size: 13px;
+            }
+            .ruleTable{
+              margin-top: 10px;
+              :global{
+                .ant-table-thead > tr > th{
+                  font-size: 13px;
+                  text-align: left;
+                  padding: 13px 20px;
+                }
+                .ant-table-tbody > tr > td{
+                  text-align: left;
+                  padding: 13px 20px;
+                  :local{
+                    .delBtn{
+                      font-weight: normal;
+                    }
+                    .editBtn{
+                      font-weight: normal;
+                    }
+                  }
+                }
+              }
+            }
+        }
+        & > button:last-child{
+          margin-left: 58px;
+        }
+    }
+}
+
+.ruleMain{
+  .ruleForm{
+    :global{
+      .ant-form-item{
+        margin-bottom: 15px;
+        :local{
+          .mergeMessage{
+            position: absolute;
+            top: 0px;
+            left: 380px;
+            display: inline-block;
+            &:before{
+              display: inline-block;
+              margin-right: 4px;
+              content: "*";
+              font-family: SimSun;
+              line-height: 1;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+    .mergeInput{
+      position: relative;
+      width: 60%;
+    }
+    // input + Icon
+    .composeContainer{
+      position: relative;
+      & > input{
+        padding-right: 25px;
+      }
+      .composeIcon{
+        position: absolute;
+        top: 5px;
+        right: 4px;
+        font-size: 20px;
+        line-height: 20px;
+        cursor: pointer;
+      }
+    }
+    .modalTable{
+      .regex{
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px 8px;
+        border-radius: 4px;
+        margin: 5px;
+        cursor: pointer;
+        &:hover{
+          transition: all .5s ease-in-out;
+        }
+      }
+      .extends{
+        margin-top: 10px;
+        .clear{
+          font-size: 12px;
+          line-height: 1;
+          text-decoration: underline;
+          margin-left: 12px;
+          cursor: pointer;
+        }
+      }
+      .ghostBtn{
+        &.btnSpace{
+          margin-left: 40px;
+        }
+        &.btnAbsoulte{
+          position: absolute;
+          top: 0px;
+          right: 90px;
+        }
+      }
+      :global{
+        .ant-table-thead > tr > th{
+          font-size: 13px;
+          text-align: left;
+          padding: 10px 15px;
+        }
+        .ant-table-tbody > tr > td{
+          text-align: left;
+          padding: 10px 15px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          max-width: 100px;
+          white-space: nowrap;
+          :local{
+            .delBtn{
+              font-weight: normal;
+            }
+            .editBtn{
+              font-weight: normal;
+              &[disabled]{
+                  opacity: 0.5;
+              }
+            }
+            .saveIcon, .editIcon, .deleIcon{
+              font-size: 22px;
+              line-height: 22px
+            }
+          }
+        }
+      }
+    }
+    ul.filterContainer{
+      display: inline-block;
+      vertical-align: top;
+      & > li{
+        position: relative;
+        padding: 8px 15px;
+        margin-bottom: 5px;
+        width: 600px;
+        :global{
+          .ant-select{
+            margin-right: 5px;
+            width: 25%;
+          }
+          .ant-input{
+            width: 30%
+          }
+        }
+        .shanChu{
+          position: absolute;
+          right: 10px;
+          font-size: 24px;
+          cursor: pointer;
+        }
+      }
+    }
+    .alertMessage{
+      display: inline-block;
+      &:before{
+        display: inline-block;
+        margin-right: 4px;
+        content: "*";
+        font-family: SimSun;
+        line-height: 1;
+        font-size: 13px;
+      }
+    }
+    .addBtn{
+      margin-top: 10px;
+      :global{
+        .ant-btn{
+          padding: 2px 10px;
+        }
+      }
+      button > span{
+        position: relative;
+        bottom: 1px;
+        font-size: 13px;
+        line-height: 1;
+      }
+      button > span:before{
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        content: '+';
+        font-size: 18px;
+        padding-right: 5px;
+      }
+    }
+  }
+}
+
+// popover
+.popover{
+  :global{
+    .ant-popover-content{
+      .ant-popover-arrow{
+        border-bottom-color: transparent;
+      }
+      .ant-popover-arrow::after{
+        border-bottom-color: transparent;
+      }
+      .ant-popover-inner{
+        opacity: 0.9;
+        .ant-popover-inner-content{
+            padding: 5px 10px;
+        }
+      }
+    }
+  }
+  .popoverMain{
+    width: 250px;
+    span{
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: color 0.5s ease-out;
+    }
+    & > span:last-child{
+      margin-right: 0px;
+    }
+    span.noData{
+      text-align: center;
+    }
+  }
+}
+
+// delete modal
+.delModalMain{
+  padding: 30px 25px;
+  p{
+    font-size: 14px;
+    &:before{
+      display: inline-block;;
+      margin-right: 20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 20px;
+      background: #fff;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      color: #1d6aa7;
+      content: '!';
+    }
+  }
+}

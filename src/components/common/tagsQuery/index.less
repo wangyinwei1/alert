@@ -1,0 +1,150 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1        2         3        4        5         6         7        8        9         10        11
+@var_default : @white0, @blue18,  @blue76, @blue15, @white0,  @blue77,  @blue78, @blue79, @blue11,  @blue17,  @white0;
+@var_white   : @black1, @white16, @white0, @blue8,  @white44, @white26, @white4, @white4, @white28, @white30, @black0;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local {
+    .tags_container {
+      padding: 12px;
+      :global {
+        .ant-form>div:last-child {
+          margin-bottom: 0px;
+        }
+      }
+
+      .tags_query_container {
+        position: relative;
+        width: auto;
+        border: 1px solid extract(@var, 2);
+        border-radius: 2px;
+        background-color: extract(@var, 3);
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        &:hover {
+          border-color: extract(@var, 4);
+        }
+        ul.tags_data_content {
+          position: relative;
+          padding: 0px 25px 0px 2px;
+          li {
+            display: inline-block;
+            line-height: 30px;
+            .tags_input {
+              position: static;
+              padding-left: 5px;
+              input {
+                height: 30px;
+                background: transparent;
+                border: transparent;
+                border-radius: 2px;
+                color: extract(@var, 1);
+                outline: none;
+                &::-webkit-input-placeholder {
+                  color: extract(@var, 9);
+                }
+                &::-ms-input-placeholder {
+                  color: extract(@var, 9);
+                }
+                &::-moz-placeholder {
+                  color: #5994d6
+                }
+              }
+            }
+            .tags_tag {
+              padding: 5px;
+              margin: 2px;
+              font-size: 13px;
+              line-height: 12px;
+              border-radius: 2px;
+              color: extract(@var, 5);
+              background: extract(@var, 6);
+              border: 1px solid extract(@var, 6);
+              display: inline-block;
+            }
+            .tags_remove {
+              position: relative;
+              top: 1px;
+              color: extract(@var, 7);
+              margin-left: 4px;
+              cursor: pointer;
+            }
+          }
+          &:hover {
+            .tags_removeAll {
+              visibility: visible;
+            }
+          }
+          .tags_removeAll {
+            position: absolute;
+            visibility: hidden;
+            cursor: pointer;
+            bottom: 4px;
+            right: 5px;
+            color: extract(@var, 8);
+            font-size: 24px;
+            line-height: 24px
+          }
+        }
+        :global {
+          .appear,
+          .enter {
+            opacity: 0;
+          }
+          .enter.enterActive,
+          .appear.appearActive {
+            opacity: 1;
+          }
+          .leave.leaveActive {
+            opacity: 0;
+          }
+        }
+        ul.tags_query_content {
+          transition: all .3s ease-in-out;
+          opacity: 1;
+          max-height: 200px;
+          overflow: scroll;
+          position: absolute;
+          left: 0;
+          top: 100%;
+          margin-top: 2px;
+          padding: 5px 0;
+          width: 100%;
+          background: extract(@var, 3);
+          border: 1px solid extract(@var, 2);
+          border-radius: 2px;
+          box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, .1);
+          z-index: 15;
+          li {
+            position: relative;
+            cursor: pointer;
+            background: extract(@var, 3);
+            color: extract(@var, 1);
+            padding: 0px 15px;
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            i {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              font-size: 16px;
+              line-height: 1;
+            }
+            &:hover {
+              background: extract(@var, 10);
+              color: extract(@var, 11);
+            }
+            &.active {
+              background-color: extract(@var, 10);
+              color: extract(@var, 11);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

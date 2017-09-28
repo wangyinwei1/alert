@@ -1,0 +1,185 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/footerMixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2      3            4           5         6        7        8         9        10      11
+@var_default : @white0, @blue,  @blue-light, @blue-dark, @blue160, @blue41, @blue41, @blue161, @blue84, @white0, @blue16 ;
+@var_white   : @black1, @blue8, @blue72,     @blue72,    @blue72,  @black1, @white6, @black1,  @black1, @blue8, @white0;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    // delete modal
+    .delModalMain{
+      padding: 30px 25px;
+      p{
+        font-size: 14px;
+        &:before{
+          display: inline-block;;
+          margin-right: 20px;
+          width: 30px;
+          height: 30px;
+          border-radius: 20px;
+          background: extract(@var, 10);
+          text-align: center;
+          line-height: 30px;
+          font-weight: bold;
+          color: extract(@var, 11);
+          content: '!';
+        }
+      }
+    }
+    .twoDevelopment {
+      float: right;
+      line-height: 35px;
+      a {
+        font-size: 13px;
+        color: extract(@var,6);
+        text-decoration: underline;
+      }
+    }
+    .nominalNumber {
+      color: extract(@var, 9);
+      padding: 18px 0 12px 0;
+      font-size: 13px;
+      display: block;
+    }
+    .addActionModal {
+      .uploadBtn {
+        width: 76px;
+        height: 28px;
+        border-color: extract(@var,2);
+        background-color: extract(@var,2);
+        color: #fff;
+        border-radius: 2px;
+        &:hover {
+          border-color: extract(@var,2);
+          background-color: extract(@var,2);
+        }
+      }
+      .unselected {
+        color: extract(@var, 8);
+        margin-left: 16px;
+        display: inline-block;
+      }
+      :global{
+        .ant-upload-list-item-error {
+          background-color: #0d5990;
+        }
+        .has-error.has-feedback:after, 
+        .has-success.has-feedback:after, 
+        .has-warning.has-feedback:after, 
+        .is-validating.has-feedback:after {
+          right: -33px;
+        }
+        .ant-form-item {
+          margin-bottom: 18px;
+        }
+        .ant-form-item-with-help {
+          margin-bottom: 0px;
+        }
+        .ant-form-item-label {
+          width: 110px;
+        }
+        .ant-form-item-label label {
+          color: extract(@var,1)
+        }
+        .ant-form-item-label label:after {
+          margin: 0 16px 0 6px;
+        }
+        .ant-form-item-control input{
+          line-height: 32px;
+        }
+        .ant-form-item-control textarea {
+          width: 300px;
+          line-height: 24px;  
+        }
+        .ant-form-item-control input,.ant-form-item-control textarea {
+          &:hover {
+            &::-webkit-input-placeholder {
+              color: extract(@var,7);
+            }
+            &::-ms-input-placeholder{
+              color: extract(@var,7);
+            }
+            &::-moz-placeholder{
+              color: extract(@var,7);
+            }
+          }
+          &::-webkit-input-placeholder {
+            color: extract(@var,7);
+          }
+          &::-ms-input-placeholder{
+            color: extract(@var,7);
+          }
+          &::-moz-placeholder{
+            color: extract(@var,7);
+          }
+        }
+      }
+    }
+    .myAppTabs{
+      .btnWtrapper{
+          clear: both;
+          padding: 13px 0px 17px 0px;
+          .total{
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 13px;
+            color: extract(@var,6);
+          }
+          :global{
+              .ant-btn{
+                  padding: 2px 10px;
+              }
+          }
+          .appBtn,.exportBtn,.importBtn {
+            height: 32px;
+            margin-right: 10px;
+            border-radius: 2px;
+          }
+          .exportBtn,.importBtn {
+            background-color: extract(@var,2);
+            border-color: extract(@var,2);
+            &:hover {
+              background-color: extract(@var,3);
+              border-color: extract(@var,3);
+            }
+            &:focus {
+              background-color: extract(@var,4);
+              border-color: extract(@var,4);
+            }
+          } 
+          .appBtn {
+            position: relative;
+            top: 3px;
+            background-color: extract(@var,2);
+            border-color: extract(@var,2);
+            &:hover {
+              background-color: extract(@var,3);
+              border-color: extract(@var,3);
+            }
+            &:focus {
+              background-color: extract(@var,4);
+              border-color: extract(@var,4);
+            }
+            & > span {
+              position: relative;
+              bottom: 3px;
+              font-size: 13px;
+            }
+            & > span:before {
+              position: relative;
+              top: 1px;
+              content: '+';
+              font-size: 18px;
+              padding-right: 5px;
+            }
+          }
+      }
+    }
+  }
+}
+
+

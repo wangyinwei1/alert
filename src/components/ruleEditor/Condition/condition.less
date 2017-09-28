@@ -1,0 +1,52 @@
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2         3         4
+@var_default : @blue129, @opacity, @blue131, @blue41;
+@var_white   : @blue13,  @white8,  @white4,  @white0;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .conditionItem {
+      border: 1px dashed extract(@var, 1);
+      background-color: extract(@var, 2);
+    }
+    .delete {
+      background-color: extract(@var, 3);
+      color: extract(@var, 4);
+    }
+  }
+}
+.conditionItem {
+  padding: 0 15px;
+  height: 55px;
+  //line-height: 55px;
+  & > * {
+    margin: 13px 0px
+  }
+}
+.key {
+
+}
+.opt {
+  margin: 0 15px;
+}
+.value {
+
+}
+.delete {
+  position: absolute;
+  margin: 0px;
+  top: 15px;
+  right: -35px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+  border-radius: 50%;
+  cursor: pointer;
+}

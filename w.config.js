@@ -9,10 +9,10 @@ var version = require('./package.json').version;
 
 
 // 程序入口
-var entry =  __dirname + '/src/index.js';
+var entry = __dirname + '/src/index.js';
 
 // 输出文件
-var output =  {
+var output = {
   filename: 'page/[name]/index.js',
   chunkFilename: 'chunk/[name].[chunkhash:5].chunk.js',
 };
@@ -21,37 +21,40 @@ var output =  {
 var devtool = 'source-map';
 
 // eslint
-var eslint =  {
+var eslint = {
   configFile: __dirname + '/.eslintrc.js',
 }
 
 // loader
 var loaders = [
-    {
-      test: /\.(json)$/,
-      exclude: /node_modules/,
-      loader: 'json',
-    },
-    {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: 'babel!eslint-loader',
-    },
-    {
-      test: /\.(?:png|jpg|gif)$/,
-      loader: 'url?limit=8192', //小于8k,内嵌;大于8k生成文件
-    },
-    {
-      test: /\.less/,
-      loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[hash:base64:4]!postcss!less'),
-    }
+  {
+    test: /\.(json)$/,
+    exclude: /node_modules/,
+    loader: 'json',
+  },
+  {
+    test: /\.(js|jsx)$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader'
+  },
+  {
+    test: /\.(?:png|jpg|gif)$/,
+    loader: 'url?limit=8192', //小于8k,内嵌;大于8k生成文件
+  },
+  {
+    test: /\.less/,
+    loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[hash:base64:4]!postcss!less'),
+  },
+  { 
+    test: /\.css$/, loader: 'style-loader!css-loader' 
+  },
 ];
 
 // dev plugin
-var devPlugins =  [
+var devPlugins = [
   new CopyWebpackPlugin([
-    { from: './src/resource/music/music.mp3' },
-    { from: './src/resource/css/loader.css' },
+    // { from: './src/resource/music/music.mp3' },
+    // { from: './src/resource/css/loader.css' },
   ]),
   // 热更新
   new webpack.HotModuleReplacementPlugin(),
@@ -65,6 +68,50 @@ var devPlugins =  [
   new ExtractTextPlugin('css.css', {
     allChunks: true
   }),
+  new HtmlWebpackPlugin({
+    template: __dirname + '/src/template/index.html',
+    title: 'Alert',
+    inject: true,
+  }),
+  new CopyWebpackPlugin([
+    {
+      from: __dirname + '/antd.min.css',
+    },
+    {
+      from: __dirname + '/iconfont/**',
+    },
+    {
+      from: __dirname + '/frontend/**',
+    },
+    {
+      from: __dirname + '/apidocs_en.html',
+    },
+    {
+      from: __dirname + '/apidocs_zh.html',
+    },
+    {
+      from: __dirname + '/polyfill-ie10.js',
+    },
+    {
+      from: __dirname + '/polyfill-ie11.js',
+    },
+    {
+      from: __dirname + '/guideTip.png',
+
+    },
+    {
+      from: __dirname + '/guideTip_en.png',
+    },
+    {
+      from: __dirname + '/sound/**',
+    },
+    {
+      from: __dirname + '/locales/**',
+    },
+    {
+      from: __dirname + '/help/**',
+    }
+  ]),
 ]
 
 // production plugin
@@ -75,8 +122,8 @@ var productionPlugins = [
   }),
   // 复制
   new CopyWebpackPlugin([
-    { from: './src/resource/music/music.mp3' },
-    { from: './src/resource/css/loader.css' },
+    // { from: './src/resource/music/music.mp3' },
+    // { from: './src/resource/css/loader.css' },
   ]),
   // HTML 模板
   new HtmlWebpackPlugin({
@@ -86,7 +133,8 @@ var productionPlugins = [
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false
-    }}
+    }
+  }
   ),
   // css打包
   new ExtractTextPlugin('css-' + version + '.css', {

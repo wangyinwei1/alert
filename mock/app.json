@@ -1,0 +1,76 @@
+{
+  "isSet": true,
+  "data": [
+        {
+            "value": 12,
+            "name": "position",
+            "path": "position",
+            "children": [
+                {
+                    "value": 12,
+                    "name": "a",
+                    "path": "position/a"
+                },
+                {
+                    "value": 28,
+                    "name": "b",
+                    "path": "position/b"
+                },
+                {
+                    "value": 20,
+                    "name": "c",
+                    "path": "Accountsposition/c"
+                },
+                {
+                    "value": 16,
+                    "name": "d",
+                    "path": "position/d"
+                }
+            ]
+        },
+        {
+            "value": 12,
+            "name": "people",
+            "path": "people",
+            "children": [
+                {
+                    "value": 24,
+                    "name": "a",
+                    "path": "people/a"
+                },
+                {
+                    "value": 16,
+                    "name": "c",
+                    "path": "people/c"
+                },
+                {
+                    "value": 20,
+                    "name": "d",
+                    "path": "people/d"
+                },
+                {
+                    "value": 16,
+                    "name": "e",
+                    "path": "people/e"
+                },
+                {
+                    "value": 16,
+                    "name": "f",
+                    "path": "people/f"
+                }
+            ]
+        },
+        {
+            "value": 12,
+            "name": "classify",
+            "path": "classify",
+            "children": [
+                {
+                    "value": 12,
+                    "name": "a",
+                    "path": "classify/a"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+@import "../../vars.less";
+@import "../../../theme/footerMixin.less";
+.dispatchMain{
+    padding: 5px 50px 5px 50px;
+    :global .ant-form-item{
+        margin-bottom: 0px;
+        :global .ant-form-item-label{
+            vertical-align: top;
+            & > label{
+                font-size: 14px;
+            }
+        }
+        & > div:last-child {
+            display: inline-block;
+            width: 70%
+        }
+        :global .ant-form-item-control{
+            :global .ant-select-selection--single{
+                :global .ant-select-selection-selected-value{
+                    // font-size: 14px;
+                    // font-weight: bold;
+                }
+            }
+        }
+    }
+}
+

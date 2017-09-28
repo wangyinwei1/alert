@@ -1,0 +1,204 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/scrollbar.less';
+//左边导航border-right变量
+@borderSold: 1px solid @white11;
+//蓝色和白色色系要上下一一对应
+//             1        2         3        4        5        6            7        8       9         10       11        12        13           14    15       16        17
+@var_default : @blue2,  @blue7,   @blue5,  @blue3,  @white2, @none,       @white0, @blue0, @blue9,   @blue9,  @blue6,   @none,    @none,       5px,  @blue14, @blue31,  @blue16;
+@var_white   : @white0, @white26, @black1, @white1, @blue8,  @borderSold, @blue8,  @blue8, @black12, @white1, @white14, @white13, @borderSold, 24px, @opacity, @white13, @white34;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    .layout{
+      :global{
+        .alertShow{
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          border-radius: 5px;
+          background: #000;
+          opacity: .5;
+          color: white;
+        }
+      }
+      position: relative;
+      height: 100%;
+      &.withnavbar {
+        .main {
+          margin-left: 0;
+        }
+      }
+      &.fold {
+        .leftMenu {
+          width: 50px;
+          .menuAssist{
+            .foldBar{
+               &:after{
+                 height:0;
+               }
+            }
+            .switchMenu{
+              left: 3px;
+            }
+            .menuSet, .menuHelp{
+              padding-left: 14px;
+            }
+          }
+        }
+        .main {
+          background: extract(@var, 11);
+          .container{
+            // background: #194c82;
+            // margin: 20px;
+          }
+          margin-left: 50px;
+        }
+      }
+      .leftMenu{
+        width: 160px;
+        position: fixed;
+        overflow: visible;
+        padding-top:95px;
+        height: 100%;
+        transition: @transition-ease-out;
+        box-shadow: @shadow-1;
+        border-right: none;
+        background: extract(@var,1);
+        border-right: extract(@var, 6);
+        background: extract(@var,1);
+        overflow-y: auto;
+        overflow-x: hidden;
+        .scrollBarMixin(@name);
+        .menuContent {
+          position: relative;
+          height: 100%;
+          min-height: 550px;
+          :global {
+
+          }
+        }
+        .menuAssist{
+          position: absolute;
+          width: 100%;
+          bottom: 0px;
+          :global {
+            li.ant-menu-item {
+              margin-bottom: 0px;
+            }
+          }
+          .menuSet, .menuHelp{
+            padding-left: 23px;
+            font-size: 14px;
+            margin-top: 0px;
+            line-height: 35px;
+            &:hover{
+              background: extract(@var, 4);
+              a{
+                color: extract(@var, 7);
+              }
+            }
+            a{
+              color: extract(@var, 3);
+            }
+            i{
+              margin-right: 12px;
+            }
+          }
+          .switchMenu{
+            z-index: 99;
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            border-radius: 50%;
+            line-height: 20px;
+            position: absolute;
+            left: 59px;
+            top: -16px;
+            text-align: center;
+            font-size: 13px;
+            background: extract(@var, 2);
+
+          }
+          .foldBar{
+            position: relative;
+            text-align: center;
+            margin: 0 10px;
+            i{
+              color: extract(@var, 9);
+              &:hover{
+                color: extract(@var, 9);
+              }
+            }
+            &:hover{
+              .switchMenu{
+                background: extract(@var, 8);
+              }
+              &:after{
+                background: extract(@var, 8);
+              }
+              i{
+                color:  extract(@var, 10);
+              }
+            }
+            .foldBarLine{
+              height:1px;
+            }
+            &:after{
+              content: " ";
+              display: inline-block;
+              position: relative;
+              height: 1px;
+              width: 90%;
+              top: -20px;
+              background: extract(@var, 2);
+            }
+          }
+        }
+      }
+      .bread{
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 55px;
+        padding-left: 20px;
+        background: none;
+        border-bottom: none;
+        background: extract(@var, 12);
+        border-bottom: extract(@var, 13);
+      }
+      .main{
+        margin-left: 160px;
+        // padding-top: 55px;
+        overflow: auto;
+        overflow-x: hidden;
+        height: 100%;
+        transition: @transition-ease-out;
+        background: extract(@var, 11);
+        //通用滚动样式
+        .scrollBarMixin(@name);
+        .container{
+          padding: extract(@var, 14) 24px 24px 24px;
+          // height: 100%;
+          .content {
+            min-height: e("calc(100vh - 100px)");
+            position: relative;
+            background: extract(@var, 15);
+            padding: 20px;
+            :global .content-inner {
+              background: #fff;
+              padding: 24px;
+              box-shadow: @shadow-1;
+              // min-height: e("calc(100vh - 143px)");
+            }
+          }
+          .no_content {
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}

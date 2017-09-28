@@ -1,0 +1,29 @@
+@import 'vars_color.less';
+.scrollBarMixin(@name) {
+   & when (@name = blue){
+     @scrollVar: @blue31,  @blue16;
+     .scrollCommon(@scrollVar);
+   }
+   & when (@name = white){
+     @scrollVar: @white13,  @white34;
+     .scrollCommon(@scrollVar)
+   }
+}
+
+.scrollCommon(@scrollVar){
+  &::-webkit-scrollbar-thumb {
+    width: 7px;
+    background-color: extract(@scrollVar, 2);
+    border: 2px solid extract(@scrollVar, 1);
+    border-radius: 7px;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: extract(@scrollVar, 1);
+    border-radius: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    width: 10px;
+  }
+}

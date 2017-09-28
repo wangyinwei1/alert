@@ -1,0 +1,112 @@
+//蓝色和白色色系要上下一一对应
+//                   1       2          3  4        5         6        7     
+@var_chart_default: @blue49, @blue163, .6, @blue68, @blue164, @blue38, @blue68;
+@var_chart_white:   @white0, @blue162, .2, @green0, @white17, @white6, @white51;
+.chartMixin(@var){
+  :local{
+    .timeChart{
+      position: relative;
+      height:80px;
+      background: extract(@var,1);
+      animation: downIn 0.3s both;
+    }
+    .mask {
+      fill: extract(@var,2);
+      opacity: extract(@var,3);
+    }
+    .histogram {
+      fill: extract(@var,4);
+    }
+    .histogramBg {
+      fill: extract(@var,1);
+    }
+    .chartAxisWrapper {
+      position: absolute;
+      left:0;
+      top: 55px;
+      :global{ 
+        .xaxis .tick{
+          fill: extract(@var,6);
+        }
+        .xaxis .tick line{
+          stroke: extract(@var,5);
+        }
+        .xaxis .tick text {
+          font: 10px sans-serif;
+          text-anchor: middle;
+
+          /* Makes it so the user can't accidentally click and select text that is meant as a label only */
+          -webkit-user-select: none;
+          /* Chrome/Safari */
+          -moz-user-select: none;
+          /* Firefox */
+          -ms-user-select: none;
+          /* IE10 */
+          -o-user-select: none;
+          user-select: none;
+          pointer-events: none;
+        }
+      }
+    }
+    .chartLoading {
+      position: absolute;
+      top: 26px!important;
+      left: 6px!important;
+    }
+    .chartWrapper {
+      cursor: pointer;
+    }
+    .deselected {
+      fill:  extract(@var,7);
+    }
+    .xAxisLine{
+      position: absolute;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background: extract(@var,5);
+      overflow: hidden;
+      top: 55px;
+    }
+    .brush {
+      fill: #eee;
+      stroke: #666;
+      .leftBrush {
+        cursor: ew-resize;
+      }
+      .rightBrush {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+:global{
+  .xaxis {
+    .tick {
+      &:last-child {
+        opacity: 0!important;
+      }
+    }
+  }
+}
+
+@skinType: white, blue; //有几种换肤的变量(目前为两种)
+//根据皮肤种类循环两份样式
+.loop(@num, @i: 1) when (@i =< @num){
+  @name: extract(@skinType, @i);
+  :global {
+    .@{name}{
+      & when (@name = blue){
+        @var: @var_chart_default;
+        .chartMixin(@var)
+      }
+      & when (@name = white){
+        @var: @var_chart_white;
+        .chartMixin(@var)
+      }
+  }
+  }
+  .loop(@num, (@i+1));
+}
+.loop(length(@skinType));

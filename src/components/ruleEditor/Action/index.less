@@ -1,0 +1,44 @@
+@import '../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2         3         4
+@var_default : @white0, @white0;
+@var_white   : @blue8,  @white4;
+.setTheme(@var_default, @var_white);
+// ---------- color ---------- //
+.getTheme(@var, @name){
+  .varList {
+    color: extract(@var, 2);
+    span:hover{
+      color:extract(@var, 1);
+    }
+  }
+}
+
+// ---------- other style ---------- //
+.setActions {
+  position: relative;
+  > :global(.ant-tabs-bar) > :global(.ant-tabs-nav-container) > :global(.ant-tabs-nav-wrap) > :global(.ant-tabs-nav-scroll) > :global(.ant-tabs-nav) > :global(.ant-tabs-tab-active) {
+      &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 18px;
+        height: 14px;
+        background: transparent url("../../../../images/ruleEditor-action-current.png") no-repeat center;
+        content: "";
+      }
+  }
+}
+
+.varList {
+  position: relative;
+  // width: 50%;
+  span {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+}

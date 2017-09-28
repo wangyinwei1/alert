@@ -1,0 +1,62 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+//              1       2         3           4           5         6
+@var_default : @iptBg,  @blue41,  @blue18,    @iptBg,     @white0,   @blue11;
+@var_white: @white0,    @white30, @white16,   @white0,    @black0,  @white6;
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name) {
+   :local {
+    .topArea {
+      position: relative;
+      height: 30px;
+      width: 100%;
+      .selectedIcon {
+        height: 30px;
+        line-height: 30px;
+        width: 37px;
+        float: left;
+        background-color: extract(@var, 1);;
+        text-align: center;
+        border: 1px solid extract(@var, 3);
+        border-right: 0px;
+        color: extract(@var, 6);
+      }
+      .spreadBtn {
+        height: 30px;
+        width: 26px;
+        float: left;
+        background-color: extract(@var, 1);;
+        text-align: center;
+        border: 1px solid extract(@var, 3);
+        padding: 0px;
+        color: extract(@var, 6);
+      }
+    }
+    .bottomArea {
+      position: relative;
+      height: 34px;
+      width: 100%;
+      background-color: extract(@var, 4);
+      border: 1px solid extract(@var, 3);
+      margin-top: 5px;
+      .iconItem {
+        height: 100%;
+        width: 16.667%;
+        min-width: 16px;
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        color: extract(@var, 6);
+        &:hover {
+          background-color: extract(@var, 2);
+          color: extract(@var, 5);
+        }
+      }
+      .iconItemActive {
+        width: 16.667%;
+        background-color: extract(@var, 2);
+        color: extract(@var, 5);
+      }
+    }
+  }
+}

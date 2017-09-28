@@ -1,0 +1,147 @@
+@import '../../../../theme/mixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2         3         4
+@var_default : @blue41, @blue131;
+@var_white   : @white0, @white4;
+.setTheme(@var_default, @var_white);
+// ---------- color ---------- //
+.getTheme(@var, @name){
+  :local{
+    .actionUpgrade{
+      .addUper,
+      .delUper {
+        background-color: extract(@var, 2);
+        color: extract(@var, 1);
+      }
+    }
+  }
+}
+
+// ---------- other style ----------
+.actionDelOrClose {
+  position: relative;
+  .label {
+    margin-right: 5px;
+  }
+}
+
+.actionNotification {
+  position: relative;
+  .nLevelUp {
+    position: relative;
+    left: 9.333%;
+  }
+  .shareUpgrade {
+    position: relative;
+    left: 9.333%;
+  }
+  .NotificationListWrap {
+    .label {
+      float: left;
+      width: 8.333%;
+      height: 32px;
+      text-align: right;
+      font-size: 13px;
+      line-height: 32px;
+    }
+    :global {
+      .ant-tabs {
+        margin-left: 8.333%;
+      }
+    }
+  }
+  .recipients_notify {
+    width: 100% !important;
+  }
+}
+
+.actionUpgrade {
+  .upgradelabel {
+    height: 45px;
+    font-size: 13px;
+    line-height: 45px;
+    margin-left: 2.333%;
+  }
+  .reclist {
+    margin-bottom: 15px;
+    margin-left: 8.333%;
+    .label {
+      margin: 0 5px;
+    }
+  }
+  .addUper,
+  .delUper {
+    position: relative;
+    top: 2px;
+    left: 10px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .delUper {
+    font-size: 13px;
+    line-height: 24px;
+  }
+}
+
+.actionChatOps {
+  .nLevelUp {
+    position: relative;
+    left: 9.333%;
+  }
+}
+
+.actionSeverity{
+  margin-bottom: 10px;
+  &:after{
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+  &:before, &:after{
+    content: " ";
+    display: table;
+  }
+  & > p {
+    position: relative;
+    top: 5px;
+    display: block;
+    width: 10%;
+    float: left;
+    flex: 0 0 auto;
+    text-align: right;
+    // ----------------
+    font-size: 13px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &::after{
+      content: '：'
+    }
+  }
+  & > .content {
+    display: block;
+    width: 87.5%;
+    float: left;
+    flex: 0 0 auto;
+    :global(.ant-select){
+        width: 100px
+    }
+    .arrow{
+      display: inline-block;
+      margin: 0px 20px;
+      transform: rotate(-90deg);
+      color: #5994d6;
+      font-size: 18px;
+    }
+  }
+}

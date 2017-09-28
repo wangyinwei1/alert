@@ -1,0 +1,181 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+@import '../../../theme/scrollbar.less';
+//蓝色和白色色系要上下一一对应
+//             1        2        3         4           5        6         7         8        9        10         11      12       13        14       15       16        17        18        19       20        21        22        23        24
+@var_default : @blue16, @white0, @blue60,  @blue61,    @blue54, @blue153, @white0,  @blue27, @blue32, @blue96,  @white0, @blue32, @opacity, @blue28, @blue29, @blue21, @blue154, @blue153, @blue155, @blue154, @blue22,  @blue31,  @blue16,  @opacity;
+@var_white   : @white0, @black0, @white16, @op20white, @white6, @white6,  @blue8,   @white7, @black1, @white11, @black1, @white0, @white11, @white0, @white0, @blue8,  @white7,  @black1,  @white0,  @white0,  @white11, @white13, @white34, @white16;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name){
+  :local{
+    .alertOriginSlider {
+      position: fixed;
+      width: 40%;
+      top: 25px;
+      right: 13px;
+      bottom: 20px;
+      transition: transform .3s ease-out;
+      overflow: hidden;
+      transform: translate(105%); //background: #fff;
+      background: extract(@var,1);
+      z-index: 999; //box-shadow: #d7dce4 0px 0px 30px;
+      box-shadow: extract(@var, 4) 0px 0px 30px;
+      border-radius: 4px;
+      :global {
+        div.ant-table-body {
+          overflow-y: auto !important;
+          background-color: #1d5692 !important;
+          .scrollBarMixin(@name);
+        }
+        .ant-table-placeholder {
+          border-bottom-width: 0px;
+        }
+        .ant-table-fixed-header .ant-table-body {
+          background-color: extract(@var, 18);
+        }
+        .ant-table-header {
+          background-color: #1d6aa7;
+          overflow: hidden !important
+        }
+        .ant-table-scroll {
+          .scrollBarMixin(@name);
+        }
+        .ant-pagination.mini .ant-pagination-item {
+          margin: 5px;
+          border: 1px solid extract(@var, 24) !important;
+          background-color: extract(@var, 17);
+          a {
+            color: extract(@var, 18);
+          }
+        }
+        .ant-pagination-item-active {
+          background-color: extract(@var, 19) !important;
+          border: 1px solid extract(@var, 24) !important;
+          a {
+            color: extract(@var, 7)  !important
+          }
+        }
+        .ant-table-pagination {
+          float: right !important;
+          color: extract(@var, 18);
+        }
+        .ant-pagination-prev {
+          border: 1px solid extract(@var, 24) !important;
+          background-color: extract(@var, 17);
+          a {
+            color: extract(@var, 18);
+          }
+        }
+        .ant-pagination-next {
+          border: 1px solid extract(@var, 24) !important;
+          background-color: extract(@var, 17);
+          a {
+            color: extract(@var, 18);
+          }
+        }
+        .ant-table-column-sorter-up.on .anticon-caret-up {
+          color: extract(@var, 16);
+        }
+        .ant-pagination-options-quick-jumper {
+          color: extract(@var, 18);
+          input {
+            color: extract(@var, 11);
+            background-color: extract(@var, 20);
+            border-color: extract(@var, 21);
+          }
+        }
+        .ant-table {
+          .ant-table-thead>tr>th {
+            background-color: extract(@var, 8);
+            color: extract(@var, 9);
+            border-bottom: 1px solid extract(@var, 10); //--------------------------
+            padding-right: 10px;
+            position: relative;
+            height: 38px;
+            line-height: 20px;
+          }
+          .ant-table-tbody>tr>td {
+            color: extract(@var, 11);
+            height: 50px;
+          }
+          .ant-table-placeholder {
+            background-color: extract(@var, 12);
+            border-top: 1px solid extract(@var, 13);
+            span {
+              color: extract(@var, 11);
+            }
+          }
+          tbody {
+            tr:nth-child(even) {
+              td {
+                background-color: extract(@var, 14);
+                border-bottom: 1px solid  extract(@var, 13);
+              }
+            }
+            tr:nth-child(odd) {
+              td {
+                background-color: extract(@var, 15);
+                border-bottom: 1px solid  extract(@var, 13);
+              }
+            }
+          }
+        }
+      }
+      &.show {
+        transform: translate(0);
+      }
+      .main {
+        .header {
+          min-height: 30px;
+          position: relative;
+          margin: 12px 12px 10px 18px;
+          p {
+            font-size: 14px; //color: #4c5159;
+            color: extract(@var, 2); //text-shadow: 0px 0px 1px #cfd0d1;
+          }
+          .close {
+            position: absolute;
+            top: -2px;
+            right: 10px;
+            cursor: pointer;
+            color:  extract(@var, 5);
+          }
+        }
+        .line {
+          background-color: extract(@var, 3);
+          height:1px;
+          width: 100%;
+        }
+      }
+      .totalTip {
+        font-size: 13px;
+        margin: 12px 12px 10px 18px;
+        color: extract(@var, 6);
+        position: relative;
+        span.totalNum {
+          color: extract(@var, 7);
+        }
+        .startTimePeriod {
+          position: absolute;
+          right: 0px;
+          top: -4px;
+          width: 250px
+        }
+      }
+      .tableContent {
+        margin: 12px 12px 10px 18px;
+        overflow-y: auto;
+        overflow-x: auto;
+        height: 80%;
+        color: #FFFFFF;
+        border: 1px solid extract(@var, 13);
+        border-bottom: none;
+      }
+      .sorter {
+        cursor: pointer
+      }
+    }
+  }
+}

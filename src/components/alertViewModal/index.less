@@ -1,0 +1,24 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+
+@var_default : @iptBg;
+@var_white:   @white13;
+
+.setTheme(@var_default, @var_white);
+
+.getTheme(@var, @name) {
+  :local {
+    .deleteBtn {
+      position: absolute;
+      right: -26px;
+      top: 0px;
+      background-color: extract(@var, 1);
+      height: 95%;
+      i {
+        font-size: 23px;
+      }
+    }
+  }
+}
+
+

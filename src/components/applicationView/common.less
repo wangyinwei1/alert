@@ -1,0 +1,216 @@
+
+.baseStyle() {
+  .detailView{
+    padding: 16px 30px;
+    .viewHeader{
+      position: relative;
+      .headerIcon{
+        font-size: 45px;
+      }
+      .headerContent{
+        position: absolute;
+        top: 5px;
+        left: 58px;
+        font-size: 13px;
+        .headerName{
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        p{
+          margin-left: 5px;
+          a{
+            margin-left: 12px;
+          }
+        }
+      }
+    }
+    .viewContent{
+      position: relative;
+      .stepLine{
+        top: 40px;
+        position: absolute;
+        display: inline-block;
+        width: 3px;
+        left: 20px;
+        height: 48%;
+      }
+      .step1, .step2{
+          position: relative;
+          padding-top: 20px;
+          padding-left: 58px;
+          margin-bottom: 50px;
+          .viewForm{
+            display: inline-block;
+            vertical-align: top;
+            :global{
+              .ant-form-item{
+                margin-bottom: 0px;
+                .ant-form-item-control{
+                  line-height: 0px;
+                  .ant-input-lg{
+                      height: 28px;
+                  }
+                }
+              }
+            }
+            .nameInput{
+              width: 200px;
+              line-height: 1.5
+            }
+          }
+          & .readOnly{
+            margin-top: 10px;
+            font-size: 13px;
+          }
+          & .createBtn{
+            margin-left: 10px;
+          }
+          & > span:first-child{
+            position: absolute;
+            top: 16px;
+            left: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 100%;
+            display: inline-block;
+            z-index: 1
+          }
+          .step1Icon{
+            &:before{
+              display: inline-block;
+              content: '1';
+              font-size: 13px;
+              position: relative;
+              top: 4px;
+              left: 10px;
+            }
+          }
+          .step2Icon{
+            &:before{
+              display: inline-block;
+              content: '2';
+              font-size: 13px;
+              position: relative;
+              top: 4px;
+              left: 10px;
+            }
+          }
+          .stepName{
+            font-size: 14px;
+            margin-bottom: 18px;
+          }
+          .stepMessage{
+            font-size: 13px;
+            margin-bottom: 10px;
+          }
+          .stepExample{
+            font-size: 13px;
+          }
+      }
+      button:last-child{
+        margin-left: 58px;
+      }
+    }
+  }
+}
+
+.skinStyle(){
+  @import '../../theme/vars_color.less';
+  //蓝色和白色色系要上下一一对应
+  //             1         2         3         4         5        6        7        8         9      10       11      12      13        14
+  @var_default_config : @blue105, @opacity, @blue106, @blue107, @white0, @white0, @blue11, @blue108, @white0, @iptBg, @blue18, @blue15, @blue84;
+  @var_white_config   : @white0,  @white11, @blue8,   @black0,  @white4, @blue8,  @white4, @white26, @black0, @blue8, @blue8,  @blue8,  @blue8;
+
+  .commonStyle(@var){
+    .detailView{
+      background-color: extract(@var, 1);
+      border: 1px solid extract(@var, 2);
+      .viewHeader{
+        .headerIcon{
+          color: extract(@var, 3);
+        }
+        .headerContent{
+          color: #fff;
+          p{
+            color: extract(@var, 4);
+            a{
+              color: #6ec2ff;
+              border-bottom: 1px solid #4a8cc3;
+              &:hover{
+                color: #3498df;
+              }
+            }
+          }
+        }
+      }
+
+      .viewContent{
+        .stepLine{
+          background: extract(@var, 8);
+        }
+        .step1, .step2{
+          .viewForm{
+            .nameInput{
+              color: extract(@var, 7);
+            }
+          }
+          & .readOnly{
+            color: extract(@var, 6);
+          }
+          & .createBtn{
+            background-color: extract(@var, 11);
+            border-color: extract(@var, 12);
+            &:hover{
+              border-color: extract(@var, 13);
+            }
+          }
+          & > span:first-child{
+            background: extract(@var, 8);
+          }
+          .step1Icon{
+            &:before{
+              color: extract(@var, 9);
+            }
+          }
+          .step2Icon{
+            &:before{
+              color: extract(@var, 9);
+            }
+          }
+          .stepName{
+            color: extract(@var, 4);
+          }
+          .stepMessage{
+            color: extract(@var, 5);
+          }
+          .stepExample{
+            color: extract(@var, 5);
+          }
+        }
+      }
+    }
+  }
+  @skinType: white, blue; //有几种换肤的变量(目前为两种)
+
+  //根据皮肤种类循环两份样式
+  .loop(@num, @i: 1) when (@i =< @num){
+    @name: extract(@skinType, @i);
+    :global {
+      .@{name}{
+        :local{
+          & when (@name = blue){
+            @var: @var_default_config;
+            .commonStyle(@var)
+          }
+          & when (@name = white){
+            @var: @var_white_config;
+            .commonStyle(@var)
+          }
+        }
+      }
+    }
+    .loop(@num, (@i+1))
+  }
+  .loop(length(@skinType));
+}

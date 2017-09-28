@@ -1,0 +1,49 @@
+@import "../vars.less";
+@import '../../theme/mixin.less';
+@import '../../theme/footerMixin.less';
+
+//蓝色和白色色系要上下一一对应
+//             1         2        3       
+@var_default : @white0, @blue64,  @blue84;
+@var_white   : @black1, @white42, @black1;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .modalWrapper {
+      padding: 50px 0 45px 0px;
+      font-size: 16px;
+      & span{
+        line-height: 40px;
+      }
+    }
+    .common (){
+      width:35px;
+      height:37px;
+      margin-right: 16px;
+      float: right;
+    }
+    .failModalImage {
+      .common();
+      background-image: url(../../../images/fail.png);
+    }
+    .modalImage {
+      background-image: url(../../../images/success.png);
+      .common();
+    }
+    .beCareful {
+      color: extract(@var,3);
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .OMP{
+      color: extract(@var,3);
+      font-size: 12px;
+      padding: 20px 0 16px 0;
+    }
+    .reminders span{
+      line-height:12px;
+      color: extract(@var,3) !important;
+    }
+  }
+}

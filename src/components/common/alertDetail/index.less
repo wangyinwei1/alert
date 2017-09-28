@@ -1,0 +1,358 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+@import '../../../theme/scrollbar.less';
+
+//蓝色和白色色系要上下一一对应
+//             1        2        3        4         5        6         7        8         9        10       11        12        13       14        15        16
+@var_default : @white0, @blue54, @blue16, @blue63,  @white0, @opacity, @blue64, @blue65,  @white0, @blue66, @blue34,  @blue67,  @blue68, @blue69,  @blue31,  @blue16;
+@var_white   : @black0, @white6, @white0, @white26, @blue13, @white11, @white7, @white28, @black1, @black0, @white26, @white28, @blue8,  @white38, @white13, @white34;
+
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name){
+  :local{
+    .detailHead, .detailHeadByOutside {
+      p {
+        color: extract(@var, 1);
+      }
+      .shanChu {
+        color: extract(@var, 2)
+      }
+      & > div {
+        background: extract(@var, 3);
+      }
+    }
+    .main {
+      .detailBody {
+        .info {
+           border: 1px solid extract(@var, 6);
+          .infoTitle {
+            color: extract(@var, 1);
+            background-color: extract(@var, 4);
+            padding-left: 10px;
+          }
+          .infoBody {
+            position: relative;
+            padding: 15px 18px 15px 18px;
+            margin-right: 12px;
+            background: extract(@var, 7);
+            li {
+              &>span:first-child {
+                color: extract(@var, 8);
+              }
+              span {
+                color: extract(@var, 9);
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+  :global{
+    .ant-btn-background-ghost{
+      color: extract(@var, 5);
+    }
+  }
+}
+
+.getTheme(@var, @name){
+  :local{
+    .main {
+      height: 100%;
+      :global .ant-spin-container {
+        height: 100%;
+      }
+      :global .ant-spin-nested-loading {
+        height: 100%;
+      }
+      .detailHead, .detailHeadByOutside {
+        position: relative;
+        margin: 12px 12px 10px 18px;
+        margin-bottom: 0px;
+        p {
+          font-size: 14px; //color: #4c5159;
+        }
+        & > div {
+          margin-bottom: 0px;
+          padding-left: 0px;
+          margin-top: 10px;
+        }
+        &.detailHeadByOutside > div {
+          background: transparent;
+        }
+        .shanChu {
+          position: absolute;
+          top: -2px;
+          right: 10px;
+          cursor: pointer;
+        }
+      }
+      .detailBody {
+        position: absolute;
+        margin-right: 10px;
+        overflow-y: auto;
+        overflow-x: auto;
+        height: 80%;
+        width: 100%;
+        &.mobileBody{
+          height: 100% // 移动端百分百占满
+        }
+        .scrollBarMixin(@name);
+        .info {
+          width: 95%;
+          margin-left: 18px;
+          margin-bottom: 10px;
+          &.mobileInfo{
+            margin-left: 10px
+          }
+          .infoTitle {
+            min-height: 36px;
+            line-height: 36px;
+            padding-left: 10px;
+            padding-right: 0px;
+            position: relative;
+            width: 100%;
+            .setVisibleIcon {
+              position: absolute;
+              right: 0px;
+              border: none;
+              height: 100%;
+              padding-right: 10px;
+              padding-left: 10px;
+            }
+          }
+          .infoBody {
+            position: relative;
+            padding: 15px 18px 15px 18px;
+            margin-right: 12px;
+            border-radius: 3px;
+            width: 100%;
+            .ciDetailLink {
+              font-size: 12px;
+              color: #00c4ff
+            }
+            &>p {
+              font-size: 14px; //color: #4c5159;
+              color: #fff;
+              font-weight: 600;
+              margin-bottom: 10px;
+            }
+            .operator_label {
+              position: absolute;
+              left: 40%;
+            }
+            .showInfo {
+              display: block;
+              animation: downIn 0.5s
+            }
+            .hideInfo {
+              // display: none;
+              animation: downOut 0.5s;
+              opacity: 0; // animation: downOut 1s;
+              height: 0px;
+            }
+            @keyframes downIn {
+              from {
+                transform: translate(0, 100%);
+                opacity: 0;
+              }
+              to {
+                transform: translate(0, 0);
+                opacity: 1;
+              }
+            }
+            @keyframes downOut {
+              from {
+                transform: translate(0, 0);
+                opacity: 1;
+                height: 100%;
+              }
+              to {
+                transform: translate(0, 100%);
+                opacity: 0;
+                height: 0px;
+              }
+            }
+            li {
+              &:global(.ant-timeline-item) {
+                padding: 0 0 12px;
+                margin-left: 25%;
+                width: 70%;
+                .timeLineLabel {
+                  position: absolute;
+                  right: 102%;
+                  text-align: right;
+                  color: extract(@var, 12);
+                  width: 35%;
+                  font-family: "Microsoft YaHei";
+                }
+                :global .ant-timeline-item-tail {
+                  margin-top: 3px;
+                  border-color: extract(@var, 14);
+                }
+                :global .ant-timeline-item-head {
+                  margin-top: 3px;
+                }
+                :global .ant-timeline-item-head-green {
+                  background-color: extract(@var, 13);
+                  border-color: extract(@var, 13);
+                }
+                :global .ant-timeline-item-head-blue {
+                  background-color: extract(@var, 14);
+                  border-color: extract(@var, 14);
+                } // &.newest-item {
+                //     .ant-timeline-item-head {
+                //         background: #B0E2FF
+                //     }
+                // }
+                // &.old-item {
+                //     .ant-timeline-item-head {
+                //         background: #9370DB
+                //     }
+                // }
+              }
+              position: relative;
+              line-height: 25px;
+              font-size: 13px;
+              padding: 0px 20px 8px 140px;
+              min-height: 33px;
+              &>span:first-child {
+                position: absolute;
+                left: 0;
+                overflow: hidden;
+                max-width: 130px; // padding-left - 10px
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              span {
+                a {
+                  color: #fff;
+                  transition: color 0.5s ease-out;
+                  &:hover {
+                    color: #49a9ee;
+                  }
+                }
+                &.tag {
+                  background-color: extract(@var, 11);
+                  overflow: hidden;
+                  display: inline-block;
+                  border: 1px solid extract(@var, 11);
+                  color: extract(@var, 1);
+                  border-radius: 4px;
+                  padding: 5px;
+                  line-height: 13px;
+                  margin-right: 10px;
+                }
+                font-size: 13px;
+                &.icon {
+                  display: inline-block;
+                  margin-right: 8px;
+                  width: 12px;
+                  height: 12px;
+                  border-radius: 100%;
+                }
+                &.jjLevel {
+                  background: #ff522a;
+                  box-shadow: #ff522a 0px 0px 5px;
+                }
+                &.gjLevel {
+                  background: #ffae2f;
+                  box-shadow: #ffae2f 0px 0px 5px;
+                }
+                &.txLevel {
+                  background: #fadc23;
+                  box-shadow: #fadc23 0px 0px 5px;
+                }
+                &.hfLevel {
+                  background: #52edcb;
+                  box-shadow: #52edcb 0px 0px 5px;
+                }
+                .stateClass {
+                  color: #6bd9b4;
+                  margin-left: 5px;
+                }
+              }
+              &.gongDan {
+                :global .ant-row {
+                  display: inline-block;
+                }
+                :global .ant-form-item {
+                  margin-bottom: 0px;
+                  margin-right: 35px;
+                  vertical-align: baseline;
+                }
+              }
+              .formMain {
+                display: inline-block;
+                .content {
+                  margin-right: 30px;
+                }
+                .ticketFlow {
+                  color: #fff;
+                  transition: color .5s ease-out;
+                  cursor: pointer;
+                  &:hover {
+                    color: #49a9ee;
+                  }
+                }
+                .editForm {
+                  color: extract(@var, 10);
+                  border-bottom: 1px solid extract(@var, 10);
+                  line-height: 13px;
+                  cursor: pointer;
+                }
+                &>button {
+                  color: #fff;
+                  background-color: #108ee9;
+                  border-color: #108ee9;
+                  span {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+            .remarkTitle {
+              display: inline-block;
+            }
+            .remark {
+              display: inline-block;
+              cursor: pointer;
+              float: right;
+              .bianji {
+                //color: #4082e6;
+                color: #01b4ff;
+              }
+              span {
+                position: relative;
+                font-size: 13px;
+                top: -2px; //color: #4082e6;
+                color: #01b4ff;
+                margin-left: 5px;
+                border-bottom: 1px solid #01b4ff;
+              }
+            }
+            .remarkOperate {
+              text-align: right;
+              &>button {
+                color: #fff;
+                background-color: #108ee9;
+                border-color: #108ee9;
+                &:global.ant-btn-primary>span {
+                  font-size: 13px;
+                }
+                &:global.ant-btn-ghost>span {
+                  //color: rgb(130, 139, 154);
+                  font-size: 13px;
+                }
+              }
+            } // remark antd style change
+            :global .ant-form-item {
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

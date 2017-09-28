@@ -1,0 +1,86 @@
+@import "../../vars.less";
+@import '../../../theme/mixin.less';
+@import '../../../theme/scrollbar.less';
+//蓝色和白色色系要上下一一对应
+//             1          2         3
+@var_default : @blue101, @blue,  @white0;
+@var_white : @blue8,     @blue8,    @white0;
+.setTheme(@var_default, @var_white);
+.getTheme(@var, @name) {
+   :local {
+    .menuTitle {
+      color: extract(@var, 1);
+      margin-left: 24px;
+      padding-bottom: 12px;
+      label {
+        font-size: 14px;
+      }
+    }
+    .notFirstMenuTitle {
+      margin-top: 26px;
+    }
+    .menuContent {
+      max-height: 252px;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .scrollBarMixin(@name);
+       :global {
+        .ant-menu-item {
+          &:hover {
+            .foldIcon {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+    .menuOperate {
+      margin-left: 24px;
+      margin-top: 10px;
+      padding-bottom: 12px;
+       :global(.ant-btn-info) {
+        color: extract(@var, 3);
+        background-color: extract(@var, 2);
+        border-color: extract(@var, 2);
+        width: 110px;
+        font-size: 14px;
+        &:hover {
+          background-color: extract(@var, 2);
+        }
+      }
+    }
+    .foldOperate {
+       :global(.ant-btn-info) {
+        width: 30px;
+        padding: 5px;
+        margin-left: -10px;
+      }
+    }
+  }
+}
+
+.menuEdit {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: none!important;
+}
+
+.bottomMenu {
+  :global {
+    li.ant-menu-item {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+:global {
+  .ant-menu-item {
+    &:hover {
+      a {
+        display: block!important;
+      }
+    }
+  }
+}

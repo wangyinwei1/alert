@@ -1,0 +1,117 @@
+@import '../../../theme/mixin.less';
+
+// --------- set Color --------- //
+// ---------  1         2         3         4        5        6         7
+@var_default: @blue129, @blue128, @blue129, @blue62, @blue77, @blue131, @blue41;
+@var_white:   @white16, @white0,  @white16, @black1, @blue8, @white4, @white0;
+.setTheme(@var_default, @var_white);
+// --------- 蓝白序号需要对应 --------- //
+.getTheme(@var, @name){
+  :local{
+    .defineConditions {
+      & > div {
+        &:before {
+          border-color: extract(@var, 1);
+        }
+      }
+    }
+    .title {
+      border: 1px dashed extract(@var, 3);
+      background-color: extract(@var, 2);
+      color: extract(@var, 4);
+    }
+    .btnWrap {
+      & > span {
+        background-color: extract(@var, 5);;
+        color: #fff;
+      }
+    }
+    .delete {
+      background-color: extract(@var, 6);
+      color: extract(@var, 7);
+    }
+  }
+}
+// --------- other styles --------- //
+.defineConditions {
+  padding-right: 35% !important;
+  margin-bottom: 24px;
+  & > div {
+    position: relative;
+    margin-bottom: 7px;
+    &:before {
+      position: absolute;
+      top: 10px;
+      left: -35px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-width: 0 0 1px 1px;
+      border-style: solid;
+      background-color: transparent;
+      content: "";
+    }
+  }
+  :global {
+    .treeTag0 {
+      &:before {
+        display: none;
+      }
+    }
+    .treeTag1 {
+      margin-left: 50px;
+    }
+    .treeTag2 {
+      margin-left: 100px;
+      .addBlock {
+        display: none;
+      }
+    }
+    .ant-select {
+      width: 122px;
+    }
+  }
+}
+
+.title {
+  padding: 0 15px;
+  height: 55px;
+  line-height: 55px;
+}
+
+.btnWrap {
+  float: right;
+  & > span {
+    padding: 0 10px;
+    height: 32px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 32px;
+  }
+}
+
+.btn {
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.addLine {
+  position: relative;
+}
+.addBlock {
+  position: relative;
+}
+.delete {
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 24px;
+  cursor: pointer;
+}
